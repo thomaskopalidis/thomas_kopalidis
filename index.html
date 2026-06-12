@@ -259,10 +259,20 @@
 <body>
 
 <header>
-  <div class="brand">Thomas Kopalidis</div>
-  <button class="hamburger" onclick="openMenu()" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+
+  <div class="brand">
+    <img src="logo.png" alt="logo" style="height:120px;">
+  </div>
+
+  <nav class="side-nav">
+    <a href="#cv">CV</a>
+    <a href="#research">R&D</a>
+    <a href="#projects">Skills</a>
+    <a href="#blog">Education</a>
+    <a href="#news">Certifications</a>
+    <a href="#misc">Contact</a>
+  </nav>
+
 </header>
 
 <!-- SIDE PANEL -->
@@ -508,7 +518,7 @@
     document.getElementById('sidePanel').classList.add('open');
     document.getElementById('overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
-  }
+  
   function closeMenu() {
     document.getElementById('sidePanel').classList.remove('open');
     document.getElementById('overlay').classList.remove('open');
