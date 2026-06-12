@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Kopalidis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f5f0;
+    --ink:#2b2b28;
+    --muted:#76746c;
+    --accent:#3d5c4f;
+    --line:#dedad0;
+    --serif:'Lora', serif;
+    --sans:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    font-size:16px;
+  }
+  a{color:var(--accent);}
+  a:hover{text-decoration:none; border-bottom:1px solid var(--accent);}
+
+  /* TOP NAVBAR */
+  header.topbar{
+    border-bottom:1px solid var(--line);
+    padding:22px 6vw;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .brand h1{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  .brand .role{
+    font-size:0.82rem;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:28px;
+  }
+  nav a{
+    font-size:0.9rem;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  nav a:hover, nav a.active{
+    border-bottom:1px solid var(--accent);
+    color:var(--accent);
+  }
+
+  main{
+    max-width:680px;
+    margin:0 auto;
+    padding:0 6vw 80px;
+  }
+
+  /* INTRO */
+  .intro{
+    padding:64px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .intro p.lead{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    line-height:1.55;
+    margin-bottom:18px;
+  }
+  .intro p{
+    color:var(--muted);
+    font-size:0.97rem;
+  }
+  .intro a.cv-link{
+    font-size:0.9rem;
+    margin-top:14px;
+    display:inline-block;
+  }
+
+  section{
+    padding:48px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{ border-bottom:none; }
+  section > h2{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--muted);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    margin-bottom:32px;
+  }
+
+  /* EXPERIENCE / EDUCATION as flowing entries */
+  .item{
+    margin-bottom:30px;
+  }
+  .item:last-child{ margin-bottom:0; }
+  .item .line1{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .item h3{
+    font-size:1.02rem;
+    font-weight:600;
+  }
+  .item .when{
+    font-size:0.82rem;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .item .org{
+    font-size:0.9rem;
+    color:var(--accent);
+    margin-top:2px;
+    margin-bottom:6px;
+  }
+  .item p{
+    font-size:0.93rem;
+    color:var(--muted);
+  }
+
+  /* PROJECTS - simple list, not cards */
+  .proj{
+    margin-bottom:26px;
+  }
+  .proj:last-child{ margin-bottom:0; }
+  .proj h3{
+    font-size:1.02rem;
+    font-weight:600;
+    display:inline;
+  }
+  .proj .tag{
+    font-size:0.8rem;
+    color:var(--muted);
+  }
+  .proj p{
+    font-size:0.93rem;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .proj a.link{
+    font-size:0.85rem;
+    margin-top:4px;
+    display:inline-block;
+  }
+
+  /* EU PROJECTS GRID */
+  .eu-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px 24px;
+  }
+  .eu-card{
+    text-align:center;
+  }
+  .eu-logo{
+    width:74px; height:74px;
+    border-radius:50%;
+    border:2px solid var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 12px;
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:0.92rem;
+    letter-spacing:0.02em;
+  }
+  .eu-card h3{
+    font-size:0.98rem;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .eu-card p{
+    font-size:0.88rem;
+    color:var(--muted);
+    text-align:left;
+    margin-bottom:10px;
+  }
+  .eu-card a.link{
+    font-size:0.85rem;
+  }
+  @media (max-width: 560px){
+    .eu-grid{ grid-template-columns:1fr; }
+  }
+
+  /* SKILLS - inline prose */
+  .skills p{
+    font-size:0.95rem;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .skills p:last-child{ margin-bottom:0; }
+  .skills .label{
+    color:var(--muted);
+    font-size:0.82rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-bottom:4px;
+    display:block;
+  }
+
+  /* CONTACT */
+  .contact p{
+    font-size:0.95rem;
+    color:var(--muted);
+    margin-bottom:16px;
+  }
+  .contact ul{
+    list-style:none;
+    font-size:0.93rem;
+  }
+  .contact li{ margin-bottom:6px; }
+
+  footer{
+    text-align:center;
+    padding:30px 6vw;
+    font-size:0.8rem;
+    color:var(--muted);
+  }
+
+  @media (max-width: 680px){
+    header.topbar{flex-direction:column; align-items:flex-start;}
+    nav ul{gap:18px; flex-wrap:wrap;}
+    .item .line1{flex-direction:column; gap:2px;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>Thomas Kopalidis</h1>
+      <div class="role">AI Specialist & Data Scientist, Rhodes / Thessaloniki</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro" id="about">
+      <p class="lead">
+        I started out studying physics, ended up in machine learning, and spend most days
+        somewhere in between — building models, cleaning data, and occasionally arguing
+        with an API that doesn't want to return JSON.
+      </p>
+      <p>
+        Lately that's meant working on a Retrieval-Augmented-Generation system for internal
+        policy documents at PwC, and a handful of side projects covering everything from
+        chest X-ray classification to a live disaster-monitoring dashboard.
+      </p>
+      <a class="cv-link" href="assets/thomas kopalidis CV 08.06.26.pdf" target="_blank">Download CV (PDF) →</a>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="item">
+        <div class="line1">
+          <h3>AI Engineer — PwC Greece</h3>
+          <span class="when">Mar – May 2026</span>
+        </div>
+        <div class="org">Project Engagement</div>
+        <p>Built a LangGraph-orchestrated RAG system for internal policy Q&A — multi-turn, document-grounded answers with step-by-step reasoning. Packaged it with Docker, ran it as a REST API.</p>
+      </div>
+
+      <div class="item">
+        <div class="line1">
+          <h3>Night Auditor — Elysium</h3>
+          <span class="when">May – Nov 2025</span>
+        </div>
+        <div class="org">Operational Data & Financial Reporting</div>
+        <p>Mostly numbers at odd hours: built dashboards tracking YoY trends and guest demographics, and ran nightly reconciliation across 300+ rooms via Fidelio Opera.</p>
+      </div>
+
+      <div class="item">
+        <div class="line1">
+          <h3>Research Assistant — CERTH ITI</h3>
+          <span class="when">2022 – 2025</span>
+        </div>
+        <div class="org">Data Science</div>
+        <p>Worked on a clinical decision support tool that computes MAGGIC heart-failure risk scores from raw text, then uses an LLM to explain the result in plain language. Tested against 50 real cases.</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Things I've built</h2>
+
+      <div class="proj">
+        <h3>European Demographics Dashboard</h3> <span class="tag">— Streamlit, Plotly, Eurostat API</span>
+        <p>A look at population trends across 40+ European countries since 2000, with a Random Forest forecast out to 2035 and a chat assistant that knows the current country's data.</p>
+        <a class="link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
+      </div>
+
+      <div class="proj">
+        <h3>Disaster Monitor</h3> <span class="tag">— JS, Leaflet, FastAPI</span>
+        <p>A single page that pulls together earthquakes, wildfires, weather, air quality, flights and ships from a dozen public APIs. Started as a weekend project, kept growing.</p>
+        <a class="link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
+      </div>
+
+      <div class="proj">
+        <h3>Nuclear Physics Encyclopedia</h3> <span class="tag">— React, SVG, Leaflet</span>
+        <p>A bilingual (Greek/English) interactive guide built mostly to explain radiation shielding to my younger cousin — turned into a full periodic table with simulations.</p>
+        <a class="link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
+      </div>
+
+      <div class="proj">
+        <h3>Chest X-Ray Classifier</h3> <span class="tag">— PyTorch, lung segmentation</span>
+        <p>Binary pneumonia detection from chest X-rays. The segmentation step helped the model focus on the lungs rather than learning shortcuts from the rest of the image.</p>
+        <a class="link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research & EU Projects</h2>
+      <div class="eu-grid">
+
+        <div class="eu-card">
+          <div class="eu-logo">E-DREAM</div>
+          <h3>E-DREAM</h3>
+          <p>Monitoring and forecasting energy-related climate extremes — solar and wind droughts — across the Mediterranean.</p>
+          <a class="link" href="#" target="_blank">Website →</a>
+        </div>
+
+        <div class="eu-card">
+          <div class="eu-logo">DRE</div>
+          <h3>DRE</h3>
+          <p>Building a Hybrid Renewable Energy Forecasting System (HYREF) within ESA's Destination Earth platform, combining solar and wind data.</p>
+          <a class="link" href="#" target="_blank">Website →</a>
+        </div>
+
+        <div class="eu-card">
+          <div class="eu-logo">AQUA<br>CYCLE</div>
+          <h3>AQUACYCLE</h3>
+          <p>Eco-innovative wastewater treatment for the Mediterranean — anaerobic digestion, constructed wetlands, and solar treatment.</p>
+          <a class="link" href="#" target="_blank">Website →</a>
+        </div>
+
+        <div class="eu-card">
+          <div class="eu-logo">INTREPID</div>
+          <h3>INTREPID</h3>
+          <p>An intelligent toolkit helping first responders explore and assess disaster areas using drones, robots, and 3D mapping.</p>
+          <a class="link" href="#" target="_blank">Website →</a>
+        </div>
+
+        <div class="eu-card">
+          <div class="eu-logo">TENDER</div>
+          <h3>TENDER</h3>
+          <p>Facial expression recognition research — lightweight CNN models for emotion detection, published in <em>Information</em> (2024).</p>
+          <a class="link" href="#" target="_blank">Website →</a>
+        </div>
+
+        <div class="eu-card">
+          <div class="eu-logo">AI4HF</div>
+          <h3>AI4HF</h3>
+          <p>An AI-driven clinical decision support system for chronic heart failure, translating MAGGIC risk scores into plain-language guidance.</p>
+          <a class="link" href="https://www.ai4hf.com/" target="_blank">ai4hf.com →</a>
+        </div>
+
+        <div class="eu-card">
+          <div class="eu-logo">AUTO<br>TRUST</div>
+          <h3>AutoTrust</h3>
+          <p>Efficient CNN-based models (MoViNets, X3D) for anomaly and sound event detection in resource-limited automotive settings.</p>
+          <a class="link" href="https://autotrust-he.eu/" target="_blank">autotrust-he.eu →</a>
+        </div>
+
+        <div class="eu-card">
+          <div class="eu-logo">REVALUE</div>
+          <h3>ReValue</h3>
+          <p>An ML pricing pipeline for 10,000+ property records — feature selection and optimized Random Forest regression (R² 0.80).</p>
+          <a class="link" href="https://www.revalue.gr/" target="_blank">revalue.gr →</a>
+        </div>
+
+      </div>
+    </section>
+      <h2>Tools I reach for</h2>
+      <p><span class="label">Day to day</span>Python, SQL, pandas, scikit-learn — the usual.</p>
+      <p><span class="label">Deep learning</span>TensorFlow, Keras, Hugging Face, and lately a lot of LangChain / LangGraph for agent-style pipelines.</p>
+      <p><span class="label">Behind the scenes</span>PostgreSQL, Flask, FastAPI, Docker, Git — enough infrastructure to keep things from breaking.</p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="item">
+        <div class="line1">
+          <h3>MSc, Artificial Intelligence & Deep Learning</h3>
+          <span class="when">2025 – now</span>
+        </div>
+        <div class="org">University of West Attica</div>
+      </div>
+
+      <div class="item">
+        <div class="line1">
+          <h3>MSc, Health Statistics & Data Analytics</h3>
+          <span class="when">2022 – 2024</span>
+        </div>
+        <div class="org">Aristotle University of Thessaloniki, Medical School — Grade: Excellent</div>
+      </div>
+
+      <div class="item">
+        <div class="line1">
+          <h3>BSc, Physics</h3>
+          <span class="when">2014 – 2020</span>
+        </div>
+        <div class="org">Aristotle University of Thessaloniki — Medical & Nuclear Physics, Grade: Very Good</div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Get in touch</h2>
+      <p>Always happy to talk about projects, research, or anything data-related. Easiest ways to reach me:</p>
+      <ul>
+        <li>Email — <a href="mailto:thomaskopalidis@yahoo.com">thomaskopalidis@yahoo.com</a></li>
+        <li>LinkedIn — <a href="https://www.linkedin.com/in/thomas-kopalidis/" target="_blank">linkedin.com/in/thomas-kopalidis</a></li>
+        <li>GitHub — <a href="https://github.com/thomaskopalidis/" target="_blank">github.com/thomaskopalidis</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © Thomas Kopalidis
+  </footer>
+
+</body>
+</html>
