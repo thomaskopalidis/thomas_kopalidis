@@ -3,453 +3,916 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thomas Kopalidis</title>
+<title>Thomas Kopalidis — AI Engineer & Data Scientist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f7f5f0;
-    --ink:#2b2b28;
-    --muted:#76746c;
-    --accent:#3d5c4f;
-    --line:#dedad0;
-    --serif:'Lora', serif;
-    --sans:'Inter', sans-serif;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:var(--sans);
-    background:var(--bg);
-    color:var(--ink);
-    line-height:1.65;
-    font-size:16px;
-  }
-  a{color:var(--accent);}
-  a:hover{text-decoration:none; border-bottom:1px solid var(--accent);}
-
-  /* TOP NAVBAR */
-  header.topbar{
-    border-bottom:1px solid var(--line);
-    padding:22px 6vw;
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:16px;
-  }
-  .brand h1{
-    font-family:var(--serif);
-    font-size:1.15rem;
-    font-weight:600;
-    letter-spacing:0.01em;
-  }
-  .brand .role{
-    font-size:0.82rem;
-    color:var(--muted);
-    margin-top:2px;
-  }
-  nav ul{
-    list-style:none;
-    display:flex;
-    gap:28px;
-  }
-  nav a{
-    font-size:0.9rem;
-    color:var(--ink);
-    text-decoration:none;
-    border-bottom:1px solid transparent;
-    padding-bottom:2px;
-  }
-  nav a:hover, nav a.active{
-    border-bottom:1px solid var(--accent);
-    color:var(--accent);
+  :root {
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --ink: #1a1a18;
+    --muted: #6b6b66;
+    --faint: #e8e6e0;
+    --accent: #2a5c45;
+    --accent-light: #e6efe9;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'DM Sans', sans-serif;
   }
 
-  main{
-    max-width:680px;
-    margin:0 auto;
-    padding:0 6vw 80px;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
   }
 
-  /* INTRO */
-  .intro{
-    padding:64px 0 56px;
-    border-bottom:1px solid var(--line);
-  }
-  .intro p.lead{
-    font-family:var(--serif);
-    font-size:1.3rem;
-    line-height:1.55;
-    margin-bottom:18px;
-  }
-  .intro p{
-    color:var(--muted);
-    font-size:0.97rem;
-  }
-  .intro a.cv-link{
-    font-size:0.9rem;
-    margin-top:14px;
-    display:inline-block;
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── TOPBAR ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245, 244, 240, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--faint);
+    padding: 0 6vw;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  section{
-    padding:48px 0;
-    border-bottom:1px solid var(--line);
-  }
-  section:last-of-type{ border-bottom:none; }
-  section > h2{
-    font-family:var(--serif);
-    font-size:1.05rem;
-    font-weight:600;
-    color:var(--muted);
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    margin-bottom:32px;
+  .brand {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+    letter-spacing: 0.01em;
   }
 
-  /* EXPERIENCE / EDUCATION as flowing entries */
-  .item{
-    margin-bottom:30px;
-  }
-  .item:last-child{ margin-bottom:0; }
-  .item .line1{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .item h3{
-    font-size:1.02rem;
-    font-weight:600;
-  }
-  .item .when{
-    font-size:0.82rem;
-    color:var(--muted);
-    white-space:nowrap;
-  }
-  .item .org{
-    font-size:0.9rem;
-    color:var(--accent);
-    margin-top:2px;
-    margin-bottom:6px;
-  }
-  .item p{
-    font-size:0.93rem;
-    color:var(--muted);
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 26px;
   }
 
-  /* PROJECTS - simple list, not cards */
-  .proj{
-    margin-bottom:26px;
-  }
-  .proj:last-child{ margin-bottom:0; }
-  .proj h3{
-    font-size:1.02rem;
-    font-weight:600;
-    display:inline;
-  }
-  .proj .tag{
-    font-size:0.8rem;
-    color:var(--muted);
-  }
-  .proj p{
-    font-size:0.93rem;
-    color:var(--muted);
-    margin-top:4px;
-  }
-  .proj a.link{
-    font-size:0.85rem;
-    margin-top:4px;
-    display:inline-block;
+  nav a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.15s;
   }
 
-  /* EU PROJECTS GRID */
-  .eu-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:28px 24px;
-  }
-  .eu-card{
-    text-align:center;
-  }
-  .eu-logo{
-    width:74px; height:74px;
-    border-radius:50%;
-    border:2px solid var(--ink);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 12px;
-    font-family:var(--serif);
-    font-weight:600;
-    font-size:0.92rem;
-    letter-spacing:0.02em;
-  }
-  .eu-card h3{
-    font-size:0.98rem;
-    font-weight:600;
-    margin-bottom:8px;
-  }
-  .eu-card p{
-    font-size:0.88rem;
-    color:var(--muted);
-    text-align:left;
-    margin-bottom:10px;
-  }
-  .eu-card a.link{
-    font-size:0.85rem;
-  }
-  @media (max-width: 560px){
-    .eu-grid{ grid-template-columns:1fr; }
+  nav a:hover, nav a.active { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 6vw 72px;
+    border-bottom: 1px solid var(--faint);
   }
 
-  /* SKILLS - inline prose */
-  .skills p{
-    font-size:0.95rem;
-    color:var(--ink);
-    margin-bottom:14px;
-  }
-  .skills p:last-child{ margin-bottom:0; }
-  .skills .label{
-    color:var(--muted);
-    font-size:0.82rem;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-    margin-bottom:4px;
-    display:block;
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
   }
 
-  /* CONTACT */
-  .contact p{
-    font-size:0.95rem;
-    color:var(--muted);
-    margin-bottom:16px;
-  }
-  .contact ul{
-    list-style:none;
-    font-size:0.93rem;
-  }
-  .contact li{ margin-bottom:6px; }
-
-  footer{
-    text-align:center;
-    padding:30px 6vw;
-    font-size:0.8rem;
-    color:var(--muted);
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-weight: 400;
   }
 
-  @media (max-width: 680px){
-    header.topbar{flex-direction:column; align-items:flex-start;}
-    nav ul{gap:18px; flex-wrap:wrap;}
-    .item .line1{flex-direction:column; gap:2px;}
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 52px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: opacity 0.15s;
+  }
+
+  .btn-primary:hover { opacity: 0.85; text-decoration: none; }
+
+  .btn-ghost {
+    border: 1px solid var(--faint);
+    color: var(--muted);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    background: var(--surface);
+    transition: border-color 0.15s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--faint);
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 6vw 100px;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0 24px;
+    margin-bottom: 32px;
+  }
+
+  .exp-item:last-child { margin-bottom: 0; }
+
+  .exp-date {
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding-top: 2px;
+    line-height: 1.4;
+  }
+
+  .exp-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .exp-org {
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .exp-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── PROJECTS ── */
+  .proj-item {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .proj-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .proj-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .proj-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .proj-stack {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .proj-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .proj-link {
+    font-size: 0.82rem;
+    color: var(--accent);
+  }
+
+  /* ── EU PROJECTS GRID ── */
+  .eu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .eu-card {
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.15s;
+  }
+
+  .eu-card:hover { border-color: #c0d4c8; }
+
+  .eu-logo-wrap {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .eu-logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
+  }
+
+  .eu-card-body {}
+
+  .eu-card-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .eu-card-desc {
+    font-size: 0.84rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .eu-card-link {
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-top: auto;
+    padding-top: 4px;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-item {
+    margin-bottom: 22px;
+    padding-left: 14px;
+    border-left: 2px solid var(--accent-light);
+  }
+
+  .pub-item:last-child { margin-bottom: 0; }
+
+  .pub-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+    line-height: 1.45;
+  }
+
+  .pub-meta {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .pub-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    font-weight: 500;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .skill-group-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-size: 0.8rem;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--faint);
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .cert-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .cert-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .cert-title {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .cert-meta {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── EDUCATION ── */
+  .edu-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0 24px;
+    margin-bottom: 24px;
+  }
+
+  .edu-item:last-child { margin-bottom: 0; }
+
+  .edu-date {
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding-top: 2px;
+  }
+
+  .edu-degree {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .edu-uni {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* ── CONTACT ── */
+  .contact-intro {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 22px;
+    max-width: 460px;
+  }
+
+  .contact-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-links li {
+    font-size: 0.92rem;
+  }
+
+  .contact-links .label {
+    color: var(--muted);
+    margin-right: 8px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 28px 6vw;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--faint);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 48px 5vw 48px; }
+    main { padding: 0 5vw 80px; }
+    header { padding: 0 5vw; }
+    .exp-item, .edu-item { grid-template-columns: 1fr; }
+    .exp-date, .edu-date { margin-bottom: 4px; }
+    .eu-grid, .skills-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 22px; }
+    nav ul { gap: 14px; }
   }
 </style>
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="brand">
-      <h1>Thomas Kopalidis</h1>
-      <div class="role">AI Specialist & Data Scientist, Rhodes / Thessaloniki</div>
+<header>
+  <div class="brand">Thomas Kopalidis</div>
+  <nav>
+    <ul>
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero" id="about">
+  <div class="hero-eyebrow">AI Engineer &amp; Data Scientist · Thessaloniki</div>
+  <h1>Building AI systems that<br><em>actually work</em> in production.</h1>
+  <p>
+    Physics background, two Masters in AI and health data, three years at CERTH ITI.
+    Lately: LangGraph RAG pipelines, multi-agent systems, and clinical decision support.
+    Looking for what comes next — ideally somewhere in Europe.
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="assets/thomas kopalidis CV 08.06.26.pdf" target="_blank">Download CV →</a>
+    <a class="btn-ghost" href="#contact">Get in touch</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">8</div>
+      <div class="stat-label">EU Research Projects</div>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#about" class="active">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div>
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Years at CERTH ITI</div>
+    </div>
+    <div>
+      <div class="stat-num">2</div>
+      <div class="stat-label">Masters Degrees</div>
+    </div>
+    <div>
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Projects Built</div>
+    </div>
+  </div>
+</div>
 
-  <main>
-    <section class="intro" id="about">
-      <p class="lead">
-        I started out studying physics, ended up in machine learning, and spend most days
-        somewhere in between — building models, cleaning data, and occasionally arguing
-        with an API that doesn't want to return JSON.
-      </p>
-      <p>
-        Lately that's meant working on a Retrieval-Augmented-Generation system for internal
-        policy documents at PwC, and a handful of side projects covering everything from
-        chest X-ray classification to a live disaster-monitoring dashboard.
-      </p>
-      <a class="cv-link" href="assets/thomas kopalidis CV 08.06.26.pdf" target="_blank">Download CV (PDF) →</a>
-    </section>
+<main>
 
-    <section id="experience">
-      <h2>Experience</h2>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Experience</div>
 
-      <div class="item">
-        <div class="line1">
-          <h3>AI Engineer — PwC Greece</h3>
-          <span class="when">Mar – May 2026</span>
+    <div class="exp-item">
+      <div class="exp-date">Mar – May 2026</div>
+      <div>
+        <div class="exp-title">AI Engineer</div>
+        <div class="exp-org">PwC Greece — Project Engagement</div>
+        <div class="exp-desc">Built a LangGraph-orchestrated RAG system for internal policy Q&amp;A — multi-turn, document-grounded answers with step-by-step reasoning. Packaged with Docker, deployed as a REST API on Hugging Face Spaces.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">May – Nov 2025</div>
+      <div>
+        <div class="exp-title">Night Auditor</div>
+        <div class="exp-org">Elysium — Operational Data &amp; Financial Reporting</div>
+        <div class="exp-desc">Built dashboards tracking YoY trends and guest demographics, ran nightly reconciliation across 300+ rooms via Fidelio Opera.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2022 – 2025</div>
+      <div>
+        <div class="exp-title">Research Assistant</div>
+        <div class="exp-org">CERTH ITI — Data Science</div>
+        <div class="exp-desc">Worked on a clinical decision support tool computing MAGGIC heart-failure risk scores from raw text, then using an LLM to explain results in plain language. Validated against 50 real cases. Contributed to 8 EU research projects across domains from renewable energy to autonomous vehicles.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Things I've built</div>
+
+    <div class="proj-item">
+      <div class="proj-header">
+        <span class="proj-title">European Demographics Dashboard</span>
+        <span class="proj-stack">Streamlit · Plotly · Eurostat API</span>
+      </div>
+      <div class="proj-desc">Population trends across 40+ European countries since 2000, with a Random Forest forecast to 2035 and a chat assistant that knows the current country's data.</div>
+      <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-header">
+        <span class="proj-title">Disaster Monitor</span>
+        <span class="proj-stack">JS · Leaflet · FastAPI</span>
+      </div>
+      <div class="proj-desc">A single page pulling together earthquakes, wildfires, weather, air quality, flights and ships from a dozen public APIs. Started as a weekend project, kept growing.</div>
+      <a class="proj-link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-header">
+        <span class="proj-title">Nuclear Physics Encyclopedia</span>
+        <span class="proj-stack">React · SVG · Leaflet</span>
+      </div>
+      <div class="proj-desc">Bilingual (Greek/English) interactive guide with radiation shielding explainers, a full periodic table, and live simulations.</div>
+      <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-header">
+        <span class="proj-title">Chest X-Ray Classifier</span>
+        <span class="proj-stack">PyTorch · Lung segmentation</span>
+      </div>
+      <div class="proj-desc">Binary pneumonia detection. A lung segmentation step helps the model focus on what matters instead of learning shortcuts from the rest of the image.</div>
+      <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
+    </div>
+  </section>
+
+  <!-- RESEARCH / EU PROJECTS -->
+  <section id="research">
+    <div class="section-label">Research &amp; EU Projects</div>
+    <div class="eu-grid">
+
+      <div class="eu-card">
+        <div class="eu-logo-wrap" style="background:#f0f4f2;">
+          <img src="assets/logos/edream.png" alt="E-DREAM logo" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:600;color:#2a5c45;text-align:center;\'>E-DREAM</span>'">
         </div>
-        <div class="org">Project Engagement</div>
-        <p>Built a LangGraph-orchestrated RAG system for internal policy Q&A — multi-turn, document-grounded answers with step-by-step reasoning. Packaged it with Docker, ran it as a REST API.</p>
+        <div class="eu-card-body">
+          <div class="eu-card-title">E-DREAM</div>
+          <div class="eu-card-desc">Monitoring and forecasting energy-related climate extremes — solar and wind droughts — across the Mediterranean.</div>
+        </div>
+        <a class="eu-card-link" href="#" target="_blank">Website →</a>
       </div>
 
-      <div class="item">
-        <div class="line1">
-          <h3>Night Auditor — Elysium</h3>
-          <span class="when">May – Nov 2025</span>
+      <div class="eu-card">
+        <div class="eu-logo-wrap" style="background:#f0f4f2;">
+          <img src="assets/logos/dre.png" alt="DRE logo" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:600;color:#2a5c45;text-align:center;\'>DRE</span>'">
         </div>
-        <div class="org">Operational Data & Financial Reporting</div>
-        <p>Mostly numbers at odd hours: built dashboards tracking YoY trends and guest demographics, and ran nightly reconciliation across 300+ rooms via Fidelio Opera.</p>
+        <div class="eu-card-body">
+          <div class="eu-card-title">DRE</div>
+          <div class="eu-card-desc">Building a Hybrid Renewable Energy Forecasting System (HYREF) within ESA's Destination Earth platform, combining solar and wind data.</div>
+        </div>
+        <a class="eu-card-link" href="#" target="_blank">Website →</a>
       </div>
 
-      <div class="item">
-        <div class="line1">
-          <h3>Research Assistant — CERTH ITI</h3>
-          <span class="when">2022 – 2025</span>
+      <div class="eu-card">
+        <div class="eu-logo-wrap" style="background:#f0f4f2;">
+          <img src="assets/logos/aquacycle.png" alt="AQUACYCLE logo" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:600;color:#2a5c45;text-align:center;\'>AQUACYCLE</span>'">
         </div>
-        <div class="org">Data Science</div>
-        <p>Worked on a clinical decision support tool that computes MAGGIC heart-failure risk scores from raw text, then uses an LLM to explain the result in plain language. Tested against 50 real cases.</p>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Things I've built</h2>
-
-      <div class="proj">
-        <h3>European Demographics Dashboard</h3> <span class="tag">— Streamlit, Plotly, Eurostat API</span>
-        <p>A look at population trends across 40+ European countries since 2000, with a Random Forest forecast out to 2035 and a chat assistant that knows the current country's data.</p>
-        <a class="link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
+        <div class="eu-card-body">
+          <div class="eu-card-title">AQUACYCLE</div>
+          <div class="eu-card-desc">Eco-innovative wastewater treatment for the Mediterranean — anaerobic digestion, constructed wetlands, and solar treatment.</div>
+        </div>
+        <a class="eu-card-link" href="#" target="_blank">Website →</a>
       </div>
 
-      <div class="proj">
-        <h3>Disaster Monitor</h3> <span class="tag">— JS, Leaflet, FastAPI</span>
-        <p>A single page that pulls together earthquakes, wildfires, weather, air quality, flights and ships from a dozen public APIs. Started as a weekend project, kept growing.</p>
-        <a class="link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
+      <div class="eu-card">
+        <div class="eu-logo-wrap">
+          <img src="assets/logos/intrepid.png" alt="INTREPID logo" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:600;color:#444;text-align:center;\'>INTREPID</span>'">
+        </div>
+        <div class="eu-card-body">
+          <div class="eu-card-title">INTREPID</div>
+          <div class="eu-card-desc">Intelligent toolkit helping first responders assess disaster areas using drones, robots, and 3D mapping.</div>
+        </div>
+        <a class="eu-card-link" href="#" target="_blank">Website →</a>
       </div>
 
-      <div class="proj">
-        <h3>Nuclear Physics Encyclopedia</h3> <span class="tag">— React, SVG, Leaflet</span>
-        <p>A bilingual (Greek/English) interactive guide built mostly to explain radiation shielding to my younger cousin — turned into a full periodic table with simulations.</p>
-        <a class="link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
+      <div class="eu-card">
+        <div class="eu-logo-wrap" style="background:#0d0d0d;">
+          <img src="assets/logos/tender.png" alt="TeNDER logo" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:600;color:#1dd1a1;text-align:center;\'>TeNDER</span>'">
+        </div>
+        <div class="eu-card-body">
+          <div class="eu-card-title">TeNDER</div>
+          <div class="eu-card-desc">Facial expression recognition — lightweight CNN models for emotion detection, published in <em>Information</em> (MDPI, 2024).</div>
+        </div>
+        <a class="eu-card-link" href="#" target="_blank">Website →</a>
       </div>
 
-      <div class="proj">
-        <h3>Chest X-Ray Classifier</h3> <span class="tag">— PyTorch, lung segmentation</span>
-        <p>Binary pneumonia detection from chest X-rays. The segmentation step helped the model focus on the lungs rather than learning shortcuts from the rest of the image.</p>
-        <a class="link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
-      </div>
-    </section>
-
-    <section id="research">
-      <h2>Research & EU Projects</h2>
-      <div class="eu-grid">
-
-        <div class="eu-card">
-          <div class="eu-logo">E-DREAM</div>
-          <h3>E-DREAM</h3>
-          <p>Monitoring and forecasting energy-related climate extremes — solar and wind droughts — across the Mediterranean.</p>
-          <a class="link" href="#" target="_blank">Website →</a>
+      <div class="eu-card">
+        <div class="eu-logo-wrap" style="background:#fff;">
+          <img src="assets/logos/ai4hf.png" alt="AI4HF logo" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:600;color:#e05c5c;text-align:center;\'>AI4HF</span>'">
         </div>
-
-        <div class="eu-card">
-          <div class="eu-logo">DRE</div>
-          <h3>DRE</h3>
-          <p>Building a Hybrid Renewable Energy Forecasting System (HYREF) within ESA's Destination Earth platform, combining solar and wind data.</p>
-          <a class="link" href="#" target="_blank">Website →</a>
+        <div class="eu-card-body">
+          <div class="eu-card-title">AI4HF</div>
+          <div class="eu-card-desc">AI-driven clinical decision support for chronic heart failure — MAGGIC risk scores translated into plain-language guidance.</div>
         </div>
-
-        <div class="eu-card">
-          <div class="eu-logo">AQUA<br>CYCLE</div>
-          <h3>AQUACYCLE</h3>
-          <p>Eco-innovative wastewater treatment for the Mediterranean — anaerobic digestion, constructed wetlands, and solar treatment.</p>
-          <a class="link" href="#" target="_blank">Website →</a>
-        </div>
-
-        <div class="eu-card">
-          <div class="eu-logo">INTREPID</div>
-          <h3>INTREPID</h3>
-          <p>An intelligent toolkit helping first responders explore and assess disaster areas using drones, robots, and 3D mapping.</p>
-          <a class="link" href="#" target="_blank">Website →</a>
-        </div>
-
-        <div class="eu-card">
-          <div class="eu-logo">TENDER</div>
-          <h3>TENDER</h3>
-          <p>Facial expression recognition research — lightweight CNN models for emotion detection, published in <em>Information</em> (2024).</p>
-          <a class="link" href="#" target="_blank">Website →</a>
-        </div>
-
-        <div class="eu-card">
-          <div class="eu-logo">AI4HF</div>
-          <h3>AI4HF</h3>
-          <p>An AI-driven clinical decision support system for chronic heart failure, translating MAGGIC risk scores into plain-language guidance.</p>
-          <a class="link" href="https://www.ai4hf.com/" target="_blank">ai4hf.com →</a>
-        </div>
-
-        <div class="eu-card">
-          <div class="eu-logo">AUTO<br>TRUST</div>
-          <h3>AutoTrust</h3>
-          <p>Efficient CNN-based models (MoViNets, X3D) for anomaly and sound event detection in resource-limited automotive settings.</p>
-          <a class="link" href="https://autotrust-he.eu/" target="_blank">autotrust-he.eu →</a>
-        </div>
-
-        <div class="eu-card">
-          <div class="eu-logo">REVALUE</div>
-          <h3>ReValue</h3>
-          <p>An ML pricing pipeline for 10,000+ property records — feature selection and optimized Random Forest regression (R² 0.80).</p>
-          <a class="link" href="https://www.revalue.gr/" target="_blank">revalue.gr →</a>
-        </div>
-
-      </div>
-    </section>
-      <h2>Tools I reach for</h2>
-      <p><span class="label">Day to day</span>Python, SQL, pandas, scikit-learn — the usual.</p>
-      <p><span class="label">Deep learning</span>TensorFlow, Keras, Hugging Face, and lately a lot of LangChain / LangGraph for agent-style pipelines.</p>
-      <p><span class="label">Behind the scenes</span>PostgreSQL, Flask, FastAPI, Docker, Git — enough infrastructure to keep things from breaking.</p>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-
-      <div class="item">
-        <div class="line1">
-          <h3>MSc, Artificial Intelligence & Deep Learning</h3>
-          <span class="when">2025 – now</span>
-        </div>
-        <div class="org">University of West Attica</div>
+        <a class="eu-card-link" href="https://www.ai4hf.com/" target="_blank">ai4hf.com →</a>
       </div>
 
-      <div class="item">
-        <div class="line1">
-          <h3>MSc, Health Statistics & Data Analytics</h3>
-          <span class="when">2022 – 2024</span>
+      <div class="eu-card">
+        <div class="eu-logo-wrap" style="background:#fff;">
+          <img src="assets/logos/autotrust.png" alt="AutoTrust logo" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:600;color:#1a9e8e;text-align:center;\'>AutoTrust</span>'">
         </div>
-        <div class="org">Aristotle University of Thessaloniki, Medical School — Grade: Excellent</div>
+        <div class="eu-card-body">
+          <div class="eu-card-title">AutoTrust</div>
+          <div class="eu-card-desc">Efficient CNN-based models (MoViNets, X3D) for anomaly and sound event detection in resource-limited automotive settings.</div>
+        </div>
+        <a class="eu-card-link" href="https://autotrust-he.eu/" target="_blank">autotrust-he.eu →</a>
       </div>
 
-      <div class="item">
-        <div class="line1">
-          <h3>BSc, Physics</h3>
-          <span class="when">2014 – 2020</span>
+      <div class="eu-card">
+        <div class="eu-logo-wrap" style="background:#fff;">
+          <img src="assets/logos/revalue.png" alt="ReValue logo" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:600;color:#111;text-align:center;\'>REvalue</span>'">
         </div>
-        <div class="org">Aristotle University of Thessaloniki — Medical & Nuclear Physics, Grade: Very Good</div>
+        <div class="eu-card-body">
+          <div class="eu-card-title">ReValue</div>
+          <div class="eu-card-desc">ML pricing pipeline for 10,000+ property records — feature selection and optimised Random Forest regression (R² 0.80).</div>
+        </div>
+        <a class="eu-card-link" href="https://www.revalue.gr/" target="_blank">revalue.gr →</a>
       </div>
-    </section>
 
-    <section id="contact" class="contact">
-      <h2>Get in touch</h2>
-      <p>Always happy to talk about projects, research, or anything data-related. Easiest ways to reach me:</p>
-      <ul>
-        <li>Email — <a href="mailto:thomaskopalidis@yahoo.com">thomaskopalidis@yahoo.com</a></li>
-        <li>LinkedIn — <a href="https://www.linkedin.com/in/thomas-kopalidis/" target="_blank">linkedin.com/in/thomas-kopalidis</a></li>
-        <li>GitHub — <a href="https://github.com/thomaskopalidis/" target="_blank">github.com/thomaskopalidis</a></li>
-      </ul>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer>
-    © Thomas Kopalidis
-  </footer>
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="section-label">Publications</div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        Facial Expression Recognition Using Lightweight CNN Architectures for Emotion Detection in Resource-Constrained Environments
+        <span class="pub-badge">Published</span>
+      </div>
+      <div class="pub-meta">
+        T. Kopalidis et al. · <em>Information</em>, MDPI · 2024 ·
+        <a href="#" style="font-size:0.82rem;">View paper →</a>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        Clinical Decision Support for Chronic Heart Failure: From MAGGIC Risk Scores to LLM-Generated Explanations
+        <span class="pub-badge">In preparation</span>
+      </div>
+      <div class="pub-meta">T. Kopalidis et al. · CERTH ITI / AI4HF Project</div>
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Tools &amp; Skills</div>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-label">Languages &amp; Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">scikit-learn</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Deep Learning &amp; LLMs</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Hugging Face</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">LangGraph</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">RAG &amp; Agents</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ChromaDB</span>
+          <span class="skill-tag">FAISS</span>
+          <span class="skill-tag">Groq</span>
+          <span class="skill-tag">Ollama</span>
+          <span class="skill-tag">CrewAI</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Flask</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Visualisation</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Plotly</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Leaflet</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Domains</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Clinical AI</span>
+          <span class="skill-tag">NLP / NER</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">Time Series</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-label">Certifications</div>
+
+    <div class="cert-item">
+      <div class="cert-icon">🤗</div>
+      <div>
+        <div class="cert-title">Hugging Face NLP Course</div>
+        <div class="cert-meta">Hugging Face · 2023</div>
+      </div>
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-icon">🧠</div>
+      <div>
+        <div class="cert-title">Deep Learning Specialization</div>
+        <div class="cert-meta">DeepLearning.AI / Coursera · 2022</div>
+      </div>
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-icon">📊</div>
+      <div>
+        <div class="cert-title">Google Data Analytics Certificate</div>
+        <div class="cert-meta">Google / Coursera · 2022</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.82rem;color:var(--muted);margin-top:12px;">
+      ✏️ <em>Add or remove certifications as needed — replace the placeholders above with your actual ones.</em>
+    </p>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label">Education</div>
+
+    <div class="edu-item">
+      <div class="edu-date">2025 – now</div>
+      <div>
+        <div class="edu-degree">MSc, Artificial Intelligence &amp; Deep Learning</div>
+        <div class="edu-uni">University of West Attica</div>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-date">2022 – 2024</div>
+      <div>
+        <div class="edu-degree">MSc, Health Statistics &amp; Data Analytics</div>
+        <div class="edu-uni">Aristotle University of Thessaloniki, Medical School — Grade: Excellent</div>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-date">2014 – 2020</div>
+      <div>
+        <div class="edu-degree">BSc, Physics</div>
+        <div class="edu-uni">Aristotle University of Thessaloniki — Medical &amp; Nuclear Physics, Grade: Very Good</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get in touch</div>
+    <p class="contact-intro">Happy to talk about projects, research, or anything data-related.</p>
+    <ul class="contact-links">
+      <li><span class="label">Email</span><a href="mailto:thomaskopalidis@yahoo.com">thomaskopalidis@yahoo.com</a></li>
+      <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/thomas-kopalidis/" target="_blank">linkedin.com/in/thomas-kopalidis</a></li>
+      <li><span class="label">GitHub</span><a href="https://github.com/thomaskopalidis/" target="_blank">github.com/thomaskopalidis</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>© Thomas Kopalidis · Built with HTML &amp; good taste.</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id], .hero[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => observer.observe(s));
+</script>
 
 </body>
 </html>
