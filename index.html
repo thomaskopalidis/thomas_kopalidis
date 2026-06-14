@@ -864,6 +864,15 @@
   </div>
 </div>
          </div> <!-- κλείνει .proj-pages -->
+       <div class="proj-nav">
+          <button class="proj-nav-btn" id="proj-prev" onclick="projGo(-1)">‹</button>
+          <div class="proj-dots">
+            <span class="proj-dot active" onclick="projGoTo(0)"></span>
+            <span class="proj-dot" onclick="projGoTo(1)"></span>
+            <span class="proj-dot" onclick="projGoTo(2)"></span>
+          </div>
+          <button class="proj-nav-btn" id="proj-next" onclick="projGo(1)">›</button>
+        </div>
       </div>   <!-- κλείνει .proj-carousel -->
     </section> <!-- κλείνει section#projects -->
   </div>   
@@ -1094,6 +1103,7 @@
   }
   function projGo(delta) { projShow(projPage + delta); }
   function projGoTo(index) { projShow(index); }
+  projShow(0);
 </script>
 </body>
 </html>
