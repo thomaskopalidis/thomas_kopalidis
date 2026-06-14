@@ -351,6 +351,10 @@
     .edu-item { grid-template-columns: 1fr; }
     .edu-logo-wrap { justify-self: start; margin-top: 8px; }
     .eu-grid { grid-template-columns: 1fr; }
+   #quick-preview { 
+      grid-template-columns: 1fr !important; 
+      gap: 32px !important; 
+    }
   }
 </style>
 </head>
@@ -380,6 +384,8 @@
 <main>
 
   <div id="tab-cv" class="tab-content active">
+    
+    <!-- Hero Section -->
     <div class="hero">
       <div class="hero-eyebrow">AI Engineer &amp; Data Scientist · Greece</div>
       <h1>Building AI systems that<br><em>actually work</em> in production.</h1>
@@ -390,6 +396,7 @@
       </div>
     </div>
 
+    <!-- Tools & Skills -->
     <section id="skills-section">
       <div class="section-label">Tools &amp; Skills</div>
       <div class="skills-grid">
@@ -419,6 +426,43 @@
         </div>
       </div>
     </section>
+
+    <!-- Quick Preview Section -->
+    <section id="quick-preview" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px;">
+      
+      <!-- Left Column: Experience Preview -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="section-label" style="margin-bottom: 12px;">Latest Career Path</div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px;">
+          <li style="font-size: 0.95rem; color: var(--ink);">
+            <strong>PwC Greece</strong> <span style="color: var(--muted);">· AI Engineer</span>
+          </li>
+          <li style="font-size: 0.95rem; color: var(--ink);">
+            <strong>Elysium Hospitality</strong> <span style="color: var(--muted);">· Operations Analyst</span>
+          </li>
+          <li style="font-size: 0.95rem; color: var(--ink);">
+            <strong>CERTH ITI</strong> <span style="color: var(--muted);">· Data Scientist &amp; AI Engineer</span>
+          </li>
+        </ul>
+        <a href="#experience" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: auto; display: inline-block;" onclick="document.querySelector('.tab-link[data-target=\'tab-experience\']').click(); return false;">View Full Timeline →</a>
+      </div>
+
+      <!-- Right Column: Projects Preview -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="section-label" style="margin-bottom: 12px;">Featured Work</div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px;">
+          <li style="font-size: 0.95rem; color: var(--ink);">
+            <strong>European Demographics</strong> <span style="color: var(--muted);">· ML forecasting &amp; live analytics space</span>
+          </li>
+          <li style="font-size: 0.95rem; color: var(--ink);">
+            <strong>AI4HF (EU Project)</strong> <span style="color: var(--muted);">· Chronic heart failure clinical decision tool</span>
+          </li>
+        </ul>
+        <a href="#rnd" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: auto; display: inline-block;" onclick="document.querySelector('.tab-link[data-target=\'tab-rnd\']').click(); return false;">See All Projects &amp; Publications →</a>
+      </div>
+
+    </section>
+
   </div>
 
   <div id="tab-experience" class="tab-content">
