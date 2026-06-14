@@ -356,6 +356,37 @@
       align-items: flex-start;
       gap: 6px;
     }
+   /* TECH BADGES GRAPHICS IN PROJECTS */
+  .proj-tech-badges {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .proj-tech-badges img {
+    width: 24px;          /* Ιδανικό μέγεθος για ευκρίνεια χωρίς να ενοχλεί το κείμενο */
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    cursor: pointer;
+  }
+
+  /* Εφέ hover: Μικρό μεγέθυνση και ένταση στο χρώμα */
+  .proj-tech-badges img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
+  }
+
+  /* Προσαρμογή του header της κάρτας για σωστό vertical alignment */
+  .proj-header { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 16px; 
+    flex-wrap: wrap; 
+    margin-bottom: 14px; 
+  }
   }
   /* PUBLICATIONS */
   .pub-item { margin-bottom: 24px; padding-left: 16px; border-left: 3px solid var(--accent-light); transition: border-color 0.2s; }
@@ -708,97 +739,109 @@
         <div class="proj-pages">
 
           <div class="proj-page active">
-            
-            <div class="proj-item">
-              <div class="proj-logo-wrap">
-                <img src="logos/pwc.png" alt="PwC Greece Logo">
-              </div>
-              <div class="proj-body">
-                <div class="proj-header">
-                  <span class="proj-title">AI Engineer (Technical Assessment Project)</span>
-                  <span class="proj-stack">LangGraph · FastAPI · Docker</span>
-                </div>
-                <div class="proj-desc">Developed a production-ready <strong>Agentic RAG system</strong> for internal policy Q&A. Built a LangGraph-orchestrated REST API enabling multi-turn, context-aware responses over versioned policy documents (PDF), with step-by-step agent reasoning, dynamic tool selection, and evidence-grounded answers. Containerized the full stack with Docker; applied enterprise best practices including session memory management and scalable document ingestion. Version-controlled via Git.</div>
-               <a class="proj-link" href="https://github.com/thomaskopalidis/" target="_blank">View Repository →</a>
-              </div>
-            </div>
-
-            <div class="proj-item">
-              <div class="proj-logo-wrap">
-                <img src="logos/ESS_ENG_RGB.jpg" alt="European Demographics Logo">
-              </div>
-              <div class="proj-body">
-                <div class="proj-header">
-                  <span class="proj-title">European Demographics Dashboard</span>
-                  <span class="proj-stack">Streamlit · Plotly · Eurostat API</span>
-                </div>
-                <div class="proj-desc">Population trends across 40+ European countries since 2000, with a Random Forest forecast to 2035 and an integrated chat assistant that queries live country metadata.</div>
-                <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="proj-page">
-            
-            <div class="proj-item">
-              <div class="proj-logo-wrap">
-                <img src="logos/disaster monitor logo.jpg" alt="Disaster Monitor Logo">
-              </div>
-              <div class="proj-body">
-                <div class="proj-header">
-                  <span class="proj-title">Disaster Monitor</span>
-                  <span class="proj-stack">JS · Leaflet · FastAPI</span>
-                </div>
-                <div class="proj-desc">A single-page application orchestrating data streams for earthquakes, wildfires, weather updates, air quality indexes, flights, and shipping maps from a dozen public APIs.</div>
-                <a class="proj-link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
-              </div>
-            </div>
-
-            <div class="proj-item">
-              <div class="proj-logo-wrap">
-                <img src="logos/radiaton_nuclear_education_logo.jpg" alt="Nuclear Physics Logo">
-              </div>
-              <div class="proj-body">
-                <div class="proj-header">
-                  <span class="proj-title">Nuclear Physics Encyclopedia</span>
-                  <span class="proj-stack">React · SVG · Leaflet</span>
-                </div>
-                <div class="proj-desc">A bilingual (Greek/English) interactive interface featuring radiation shielding visual explainers, a full periodic table, and live simulated laboratory metrics.</div>
-                <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="proj-page">
-            <div class="proj-item">
-              <div class="proj-logo-wrap">
-                <img src="logos/xray-logo.png" alt="Chest X-Ray Logo">
-              </div>
-              <div class="proj-body">
-                <div class="proj-header">
-                  <span class="proj-title">Chest X-Ray Classifier</span>
-                  <span class="proj-stack">PyTorch · Lung segmentation</span>
-                </div>
-                <div class="proj-desc">Binary pneumonia detector. An embedded lung segmentation preprocessing stage forces the neural network to focus exclusively on pulmonary tissue instead of learning image shortcuts.</div>
-                <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="proj-nav">
-          <button class="proj-nav-btn" id="proj-prev" onclick="projGo(-1)" disabled aria-label="Previous projects">←</button>
-          <div class="proj-dots">
-            <span class="proj-dot active" onclick="projGoTo(0)"></span>
-            <span class="proj-dot" onclick="projGoTo(1)"></span>
-          </div>
-          <button class="proj-nav-btn" id="proj-next" onclick="projGo(1)" aria-label="Next projects">→</button>
+  
+  <!-- Project 1: PwC -->
+  <div class="proj-item">
+    <div class="proj-logo-wrap">
+      <img src="logos/pwc-logo.png" alt="PwC Greece Logo">
+    </div>
+    <div class="proj-body">
+      <div class="proj-header">
+        <span class="proj-title">AI Engineer (Technical Assessment Project)</span>
+        <!-- Εικονίδια αντί για απλό κείμενο -->
+        <div class="proj-tech-badges">
+          <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" title="Python">
+          <img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI" title="FastAPI">
+          <img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker" title="Docker">
+          <img src="https://cdn.simpleicons.org/git/F05032" alt="Git" title="Git">
         </div>
       </div>
-    </section>
-
+      <div class="proj-desc">Developed a production-ready <strong>Agentic RAG system</strong> for internal policy Q&A. Built a LangGraph-orchestrated REST API enabling multi-turn, context-aware responses over versioned policy documents (PDF), with step-by-step agent reasoning, dynamic tool selection, and evidence-grounded answers. Containerized the full stack with Docker; applied enterprise best practices including session memory management and scalable document ingestion. Version-controlled via Git.</div>
+      <a class="proj-link" href="https://github.com/thomaskopalidis/" target="_blank">View Repository →</a>
+    </div>
   </div>
+
+  <!-- Project 2: European Demographics -->
+  <div class="proj-item">
+    <div class="proj-logo-wrap">
+      <img src="logos/eurostat-logo.png" alt="European Demographics Logo">
+    </div>
+    <div class="proj-body">
+      <div class="proj-header">
+        <span class="proj-title">European Demographics Dashboard</span>
+        <div class="proj-tech-badges">
+          <img src="https://cdn.simpleicons.org/streamlit/FF4B4B" alt="Streamlit" title="Streamlit">
+          <img src="https://cdn.simpleicons.org/plotly/3F4F75" alt="Plotly" title="Plotly">
+          <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" title="Python">
+        </div>
+      </div>
+      <div class="proj-desc">Population trends across 40+ European countries since 2000, with a Random Forest forecast to 2035 and an integrated chat assistant that queries live country metadata.</div>
+      <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Σελίδα 2 -->
+<div class="proj-page">
+  
+  <!-- Project 3: Disaster Monitor -->
+  <div class="proj-item">
+    <div class="proj-logo-wrap">
+      <img src="logos/disaster-logo.png" alt="Disaster Monitor Logo">
+    </div>
+    <div class="proj-body">
+      <div class="proj-header">
+        <span class="proj-title">Disaster Monitor</span>
+        <div class="proj-tech-badges">
+          <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript" title="JavaScript">
+          <img src="https://cdn.simpleicons.org/leaflet/199900" alt="Leaflet" title="Leaflet">
+          <img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI" title="FastAPI">
+        </div>
+      </div>
+      <div class="proj-desc">A single-page application orchestrating data streams for earthquakes, wildfires, weather updates, air quality indexes, flights, and shipping maps from a dozen public APIs.</div>
+      <a class="proj-link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
+    </div>
+  </div>
+
+  <!-- Project 4: Nuclear Physics Encyclopedia -->
+  <div class="proj-item">
+    <div class="proj-logo-wrap">
+      <img src="logos/nuclear-logo.png" alt="Nuclear Physics Logo">
+    </div>
+    <div class="proj-body">
+      <div class="proj-header">
+        <span class="proj-title">Nuclear Physics Encyclopedia</span>
+        <div class="proj-tech-badges">
+          <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React" title="React">
+          <img src="https://cdn.simpleicons.org/gnubash/4EAA25" alt="SVG/Shell" title="SVG & Engineering">
+        </div>
+      </div>
+      <div class="proj-desc">A bilingual (Greek/English) interactive interface featuring radiation shielding visual explainers, a full periodic table, and live simulated laboratory metrics.</div>
+      <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Σελίδα 3 -->
+<div class="proj-page">
+  <!-- Project 5: Chest X-Ray Classifier -->
+  <div class="proj-item">
+    <div class="proj-logo-wrap">
+      <img src="logos/xray-logo.png" alt="Chest X-Ray Logo">
+    </div>
+    <div class="proj-body">
+      <div class="proj-header">
+        <span class="proj-title">Chest X-Ray Classifier</span>
+        <div class="proj-tech-badges">
+          <img src="https://cdn.simpleicons.org/pytorch/EE4C2C" alt="PyTorch" title="PyTorch">
+          <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" title="Python">
+        </div>
+      </div>
+      <div class="proj-desc">Binary pneumonia detector. An embedded lung segmentation preprocessing stage forces the neural network to focus exclusively on pulmonary tissue instead of learning image shortcuts.</div>
+      <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
+    </div>
+  </div>
+</div>
 
   <div id="tab-education" class="tab-content">
   <section>
