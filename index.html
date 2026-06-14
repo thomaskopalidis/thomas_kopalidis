@@ -244,6 +244,27 @@
   .eu-card-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; text-align: center; flex-grow: 1; }
   .eu-card-link { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-top: auto; padding: 8px 16px; border-radius: 20px; background: var(--accent-light); transition: 0.2s; }
   .eu-card-link:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+ .exp-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 20px;
+  margin-bottom: 40px;
+  align-items: start;
+  }
+  .exp-item:last-child { margin-bottom: 0; }
+
+  .exp-logo-wrap {
+   width: 56px; height: 56px;
+   background: #fff;
+   border: 1px solid var(--faint);
+   border-radius: 8px;
+   display: flex; align-items: center; justify-content: center;
+   overflow: hidden; flex-shrink: 0; padding: 4px;
+   }
+  .exp-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+
+  .exp-details { display: flex; flex-direction: column; gap: 4px; }
   /* PROJECTS / CODE */
   .proj-item { 
     background: var(--surface); 
@@ -570,8 +591,8 @@
       <!-- Left Column: Experience Preview -->
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <div class="section-label" style="margin-bottom: 12px;">Latest Career Path</div>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px;
-          <li style="font-size: 0.95rem; color: var(--ink);">
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px;">
+         <li style="font-size: 0.95rem; color: var(--ink);">
             <strong>Elysium Hospitality</strong> <span style="color: var(--muted);">· Operations Analyst</span>
           </li>
           <li style="font-size: 0.95rem; color: var(--ink);">
@@ -605,21 +626,27 @@
       
       <!-- 1ο Item: Elysium Hospitality -->
       <div class="exp-item">
-        <div class="exp-date">May – Nov 2025</div>
-        <div>
-          <div class="exp-title">Loyalty CRM Operations Analyst &amp; Night Auditor</div>
-          <div class="exp-org">Elysium Hospitality</div>
-          <div class="exp-desc">Built dashboards tracking YoY trends and guest demographics, ran nightly reconciliation across 300+ rooms via Fidelio Opera, and streamlined operational data reporting.</div>
-        </div>
+       <div class="exp-logo-wrap">
+        <img src="logos/elysium-logo.png" alt="Elysium Hospitality logo">
+     </div>
+     <div class="exp-details">
+       <div class="exp-date">May – Nov 2025</div>
+       <div class="exp-title">Loyalty CRM Operations Analyst &amp; Night Auditor</div>
+       <div class="exp-org">Elysium Hospitality</div>
+       <div class="exp-desc">Built dashboards tracking YoY trends and guest demographics, ran nightly reconciliation across 300+ rooms via Fidelio Opera, and streamlined operational data reporting.</div>
       </div>
+    </div>
       
       <!-- 2ο Item: CERTH ITI -->
       <div class="exp-item">
-        <div class="exp-date">2022 – 2025</div>
-        <div>
+        <div class="exp-logo-wrap">
+          <img src="logos/certh-logo.png" alt="CERTH ITI logo">
+        </div>
+        <div class="exp-details">
+          <div class="exp-date">Feb 2022 – Feb 2025</div>
           <div class="exp-title">Data Scientist &amp; AI Engineer</div>
           <div class="exp-org">CERTH ITI</div>
-          <div class="exp-desc">Worked on a clinical decision support tool computing MAGGIC heart-failure risk scores from raw text, then using an LLM to explain results in plain language. Validated against 50 real cases. Contributed to 8 EU research projects across domains from renewable energy to autonomous vehicles.</div>
+          <div class="exp-desc">...</div>
         </div>
       </div>
 
@@ -635,11 +662,14 @@
 
       <!-- 4ο Item: Medical Physics Intern -->
       <div class="exp-item">
-        <div class="exp-date">June – Sep 2019</div>
-        <div>
+        <div class="exp-logo-wrap">
+          <img src="logos/ahepa-logo.png" alt="AHEPA logo">
+        </div>
+        <div class="exp-details">
+          <div class="exp-date">June – Sep 2019</div>
           <div class="exp-title">Medical Physics &amp; Data Analysis Intern</div>
           <div class="exp-org">AHEPA University Hospital of Thessaloniki</div>
-          <div class="exp-desc">Assisted with clinical data collection, analysis, and reporting under the supervision of the Medical Physics Department.</div>
+          <div class="exp-desc">...</div>
         </div>
       </div>
 
@@ -793,7 +823,7 @@
       <a class="proj-link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
     </div>
   </div>
-
+  
   <!-- Project 4: Nuclear Physics Encyclopedia -->
   <div class="proj-item">
     <div class="proj-logo-wrap">
@@ -833,6 +863,10 @@
     </div>
   </div>
 </div>
+         </div> <!-- κλείνει .proj-pages -->
+      </div>   <!-- κλείνει .proj-carousel -->
+    </section> <!-- κλείνει section#projects -->
+  </div>   
 
   <div id="tab-education" class="tab-content">
   <section>
