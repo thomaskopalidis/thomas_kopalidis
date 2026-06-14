@@ -1,4 +1,4 @@
-# Thomas Kopalidis — AI Engineer & Data Scientist
+# Thomas Kopalidis
 > Production-Ready AI Architectures | Multi-Agent Orchestration | Deep Learning & Healthcare Data Analytics
 
 [![Website](https://img.shields.io/badge/Website-Live-2a5c45?style=for-the-badge&logo=google-chrome&logoColor=white)](https://thomaskopalidis.github.io/)
