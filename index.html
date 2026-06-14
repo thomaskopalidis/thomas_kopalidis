@@ -247,15 +247,16 @@
   /* PROJECTS / CODE */
   .proj-item { 
     background: var(--surface); 
-    padding: 24px; 
+    padding: 28px; 
     border-radius: 12px; 
     border: 1px solid var(--faint); 
-    margin-bottom: 20px; 
+    margin-bottom: 24px; 
     transition: transform 0.2s, box-shadow 0.2s; 
     
-    display: flex;         /* Μετατροπή σε οριζόντια διάταξη */
-    gap: 20px; 
+    display: flex;         /* Οριζόντια διάταξη: Logo αριστερά, Body δεξιά */
+    gap: 24px; 
     align-items: flex-start;
+    width: 100%;           /* Διασφάλιση πλήρους πλάτους */
   }
   .proj-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
   
@@ -285,34 +286,73 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    min-width: 0;          /* Αποτρέπει το text overflow στα flex σενάρια */
   }
-  .proj-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-  .proj-title { font-size: 1.1rem; font-weight: 600; color: var(--ink); }
-  .proj-stack { font-size: 0.75rem; font-weight: 600; background: var(--bg); padding: 4px 10px; border-radius: 20px; color: var(--accent); }
-  .proj-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
+  .proj-header { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 12px; 
+    flex-wrap: wrap; 
+    margin-bottom: 12px; 
+  }
+  .proj-title { font-size: 1.15rem; font-weight: 600; color: var(--ink); }
+  .proj-stack { font-size: 0.75rem; font-weight: 600; background: var(--bg); padding: 4px 12px; border-radius: 20px; color: var(--accent); }
+  .proj-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; text-align: left; }
   .proj-link { font-size: 0.85rem; font-weight: 500; color: var(--accent); display: inline-flex; align-items: center; }
 
   /* PROJECTS CAROUSEL */
-  .proj-carousel { position: relative; }
-  .proj-pages { overflow: hidden; }
+  .proj-carousel { position: relative; width: 100%; }
+  .proj-pages { overflow: hidden; width: 100%; }
   .proj-page {
     display: none;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr; /* ΔΙΟΡΘΩΣΗ: 1 project ανά σειρά για πλήρες, καθαρό πλάτος */
+    gap: 0;
+    width: 100%;
   }
   .proj-page.active { display: grid; animation: fadeIn 0.35s ease; }
-  .proj-page .proj-item { margin-bottom: 0; height: 100%; }
-  .proj-page .proj-desc { flex-grow: 1; }
+  
+  .proj-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px; margin-top: 32px;
+  }
+  .proj-nav-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--faint);
+    background: var(--surface);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .proj-nav-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .proj-nav-btn:disabled { opacity: 0.35; cursor: default; }
+  .proj-nav-btn:disabled:hover { background: var(--surface); color: var(--accent); }
+  .proj-dots { display: flex; gap: 8px; }
+  .proj-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--faint); cursor: pointer; transition: 0.2s;
+  }
+  .proj-dot.active { background: var(--accent); width: 22px; border-radius: 4px; }
   
   /* Responsive προσαρμογή για κινητά */
   @media (max-width: 550px) {
     .proj-item {
-      flex-direction: column; /* Τα λογότυπα έρχονται πάνω από το κείμενο στις μικρές οθόνες */
+      flex-direction: column; 
       align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
     }
     .proj-logo-wrap {
       width: 100px;
       height: 68px;
+    }
+    .proj-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
     }
   }
   /* PUBLICATIONS */
