@@ -473,41 +473,60 @@
 
     <section id="projects">
       <div class="section-label">Projects / Code</div>
-      
-      <div class="proj-item">
-        <div class="proj-header">
-          <span class="proj-title">European Demographics Dashboard</span>
-          <span class="proj-stack">Streamlit · Plotly · Eurostat API</span>
+
+      <div class="proj-carousel">
+        <div class="proj-pages">
+
+          <div class="proj-page active">
+            <div class="proj-item">
+              <div class="proj-header">
+                <span class="proj-title">European Demographics Dashboard</span>
+                <span class="proj-stack">Streamlit · Plotly · Eurostat API</span>
+              </div>
+              <div class="proj-desc">Population trends across 40+ European countries since 2000, with a Random Forest forecast to 2035 and an integrated chat assistant that queries live country metadata.</div>
+              <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
+            </div>
+
+            <div class="proj-item">
+              <div class="proj-header">
+                <span class="proj-title">Disaster Monitor</span>
+                <span class="proj-stack">JS · Leaflet · FastAPI</span>
+              </div>
+              <div class="proj-desc">A single-page application orchestrating data streams for earthquakes, wildfires, weather updates, air quality indexes, flights, and shipping maps from a dozen public APIs.</div>
+              <a class="proj-link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
+            </div>
+          </div>
+
+          <div class="proj-page">
+            <div class="proj-item">
+              <div class="proj-header">
+                <span class="proj-title">Nuclear Physics Encyclopedia</span>
+                <span class="proj-stack">React · SVG · Leaflet</span>
+              </div>
+              <div class="proj-desc">A bilingual (Greek/English) interactive interface featuring radiation shielding visual explainers, a full periodic table, and live simulated laboratory metrics.</div>
+              <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
+            </div>
+
+            <div class="proj-item">
+              <div class="proj-header">
+                <span class="proj-title">Chest X-Ray Classifier</span>
+                <span class="proj-stack">PyTorch · Lung segmentation</span>
+              </div>
+              <div class="proj-desc">Binary pneumonia detector. An embedded lung segmentation preprocessing stage forces the neural network to focus exclusively on pulmonary tissue instead of learning image shortcuts.</div>
+              <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
+            </div>
+          </div>
+
         </div>
-        <div class="proj-desc">Population trends across 40+ European countries since 2000, with a Random Forest forecast to 2035 and an integrated chat assistant that queries live country metadata.</div>
-        <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
-      </div>
-      
-      <div class="proj-item">
-        <div class="proj-header">
-          <span class="proj-title">Disaster Monitor</span>
-          <span class="proj-stack">JS · Leaflet · FastAPI</span>
+
+        <div class="proj-nav">
+          <button class="proj-nav-btn" id="proj-prev" onclick="projGo(-1)" disabled aria-label="Previous projects">←</button>
+          <div class="proj-dots">
+            <span class="proj-dot active" onclick="projGoTo(0)"></span>
+            <span class="proj-dot" onclick="projGoTo(1)"></span>
+          </div>
+          <button class="proj-nav-btn" id="proj-next" onclick="projGo(1)" aria-label="Next projects">→</button>
         </div>
-        <div class="proj-desc">A single-page application orchestrating data streams for earthquakes, wildfires, weather updates, air quality indexes, flights, and shipping maps from a dozen public APIs.</div>
-        <a class="proj-link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
-      </div>
-      
-      <div class="proj-item">
-        <div class="proj-header">
-          <span class="proj-title">Nuclear Physics Encyclopedia</span>
-          <span class="proj-stack">React · SVG · Leaflet</span>
-        </div>
-        <div class="proj-desc">A bilingual (Greek/English) interactive interface featuring radiation shielding visual explainers, a full periodic table, and live simulated laboratory metrics.</div>
-        <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
-      </div>
-      
-      <div class="proj-item">
-        <div class="proj-header">
-          <span class="proj-title">Chest X-Ray Classifier</span>
-          <span class="proj-stack">PyTorch · Lung segmentation</span>
-        </div>
-        <div class="proj-desc">Binary pneumonia detector. An embedded lung segmentation preprocessing stage forces the neural network to focus exclusively on pulmonary tissue instead of learning image shortcuts.</div>
-        <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
       </div>
     </section>
 
