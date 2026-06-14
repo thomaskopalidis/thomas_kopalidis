@@ -656,6 +656,22 @@
       }, 50);
     });
   });
+// Projects carousel
+  const projPages = document.querySelectorAll('.proj-page');
+  const projDots = document.querySelectorAll('.proj-dot');
+  const projPrev = document.getElementById('proj-prev');
+  const projNext = document.getElementById('proj-next');
+  let projPage = 0;
+
+  function projShow(index) {
+    projPages.forEach((p, i) => p.classList.toggle('active', i === index));
+    projDots.forEach((d, i) => d.classList.toggle('active', i === index));
+    if (projPrev) projPrev.disabled = index === 0;
+    if (projNext) projNext.disabled = index === projPages.length - 1;
+    projPage = index;
+  }
+  function projGo(delta) { projShow(projPage + delta); }
+  function projGoTo(index) { projShow(index); }
 </script>
 </body>
 </html>
