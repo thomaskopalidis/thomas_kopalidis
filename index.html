@@ -171,55 +171,55 @@
   .edu-uni { font-size: 0.9rem; color: var(--muted); }
   .exp-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
   /* EDUCATION SECTION STYLE (STYLE UPDATE) */
-.edu-item { 
-  display: grid; 
-  grid-template-columns: 60px 1fr; /* 2 στήλες: Λογότυπο αριστερά, κείμενο δεξιά */
-  gap: 20px; 
-  margin-bottom: 40px; 
-  align-items: start; 
-}
+  .edu-item { 
+    display: grid; 
+    grid-template-columns: 60px 1fr; /* 2 στήλες: Λογότυπο αριστερά, κείμενο δεξιά */
+    gap: 20px; 
+    margin-bottom: 40px; 
+    align-items: start; 
+  }
 
-.edu-logo-wrap {
-  width: 56px; 
-  height: 56px;
-  background: transparent; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  overflow: hidden; 
-  flex-shrink: 0;
-}
+  .edu-logo-wrap {
+    width: 56px; 
+    height: 56px;
+    background: transparent; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    overflow: hidden; 
+    flex-shrink: 0;
+  }
 
-.edu-logo-wrap img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: contain; 
-}
+  .edu-logo-wrap img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+  }
 
-.edu-details {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+  .edu-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 
-.edu-degree { 
-  font-size: 1.1rem; 
-  font-weight: 600; 
-  color: var(--ink); 
-  line-height: 1.3;
-}
+  .edu-degree { 
+    font-size: 1.1rem; 
+    font-weight: 600; 
+    color: var(--ink); 
+    line-height: 1.3;
+  }
 
-.edu-uni { 
-  font-size: 0.95rem; 
-  color: var(--muted); 
-}
+  .edu-uni { 
+    font-size: 0.95rem; 
+    color: var(--muted); 
+   }
 
-.edu-date { 
-  font-size: 0.85rem; 
-  font-weight: 500; 
-  color: var(--muted); 
-  margin-top: 4px; 
-}
+  .edu-date { 
+    font-size: 0.85rem; 
+    font-weight: 500; 
+    color: var(--muted); 
+    margin-top: 4px; 
+  }
   /* EU GRID (R&D) */
   .eu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
   .eu-card {
@@ -244,7 +244,77 @@
   .eu-card-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; text-align: center; flex-grow: 1; }
   .eu-card-link { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-top: auto; padding: 8px 16px; border-radius: 20px; background: var(--accent-light); transition: 0.2s; }
   .eu-card-link:hover { background: var(--accent); color: #fff; text-decoration: none; }
+  /* PROJECTS / CODE */
+  .proj-item { 
+    background: var(--surface); 
+    padding: 24px; 
+    border-radius: 12px; 
+    border: 1px solid var(--faint); 
+    margin-bottom: 20px; 
+    transition: transform 0.2s, box-shadow 0.2s; 
+    
+    display: flex;         /* Μετατροπή σε οριζόντια διάταξη */
+    gap: 20px; 
+    align-items: flex-start;
+  }
+  .proj-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+  
+  /* Το λευκό στρογγυλεμένο κουτί για το λογότυπο του Project */
+  .proj-logo-wrap {
+    width: 110px;
+    height: 75px;
+    background: #ffffff;
+    border: 1px solid var(--faint);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    padding: 6px;
+  }
+  .proj-logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* Το δεξί μέρος της κάρτας με τα κείμενα */
+  .proj-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .proj-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .proj-title { font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+  .proj-stack { font-size: 0.75rem; font-weight: 600; background: var(--bg); padding: 4px 10px; border-radius: 20px; color: var(--accent); }
+  .proj-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
+  .proj-link { font-size: 0.85rem; font-weight: 500; color: var(--accent); display: inline-flex; align-items: center; }
 
+  /* PROJECTS CAROUSEL */
+  .proj-carousel { position: relative; }
+  .proj-pages { overflow: hidden; }
+  .proj-page {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .proj-page.active { display: grid; animation: fadeIn 0.35s ease; }
+  .proj-page .proj-item { margin-bottom: 0; height: 100%; }
+  .proj-page .proj-desc { flex-grow: 1; }
+  
+  /* Responsive προσαρμογή για κινητά */
+  @media (max-width: 550px) {
+    .proj-item {
+      flex-direction: column; /* Τα λογότυπα έρχονται πάνω από το κείμενο στις μικρές οθόνες */
+      align-items: flex-start;
+    }
+    .proj-logo-wrap {
+      width: 100px;
+      height: 68px;
+    }
+  }
   /* PUBLICATIONS */
   .pub-item { margin-bottom: 24px; padding-left: 16px; border-left: 3px solid var(--accent-light); transition: border-color 0.2s; }
   .pub-item:hover { border-color: var(--accent); }
@@ -467,43 +537,72 @@
       <div class="proj-carousel">
         <div class="proj-pages">
 
+          <!-- 1η Σελίδα Projects -->
           <div class="proj-page active">
+            
+            <!-- Project 1: European Demographics -->
             <div class="proj-item">
-              <div class="proj-header">
-                <span class="proj-title">European Demographics Dashboard</span>
-                <span class="proj-stack">Streamlit · Plotly · Eurostat API</span>
+              <div class="proj-logo-wrap">
+                <img src="logos/eurostat-logo.png" alt="European Demographics Logo">
               </div>
-              <div class="proj-desc">Population trends across 40+ European countries since 2000, with a Random Forest forecast to 2035 and an integrated chat assistant that queries live country metadata.</div>
-              <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
+              <div class="proj-body">
+               
+                <div class="proj-header">
+                  <span class="proj-title">European Demographics Dashboard</span>
+                  <span class="proj-stack">Streamlit · Plotly · Eurostat API</span>
+                </div>
+                <div class="proj-desc">Population trends across 40+ European countries since 2000, with a Random Forest forecast to 2035 and an integrated chat assistant that queries live country metadata.</div>
+                <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Euro-Demographics" target="_blank">huggingface.co/spaces/leonardo999/Euro-Demographics →</a>
+              </div>
             </div>
 
+            <!-- Project 2: Disaster Monitor -->
             <div class="proj-item">
-              <div class="proj-header">
-                <span class="proj-title">Disaster Monitor</span>
-                <span class="proj-stack">JS · Leaflet · FastAPI</span>
+              <div class="proj-logo-wrap">
+                <img src="logos/disaster-logo.png" alt="Disaster Monitor Logo">
               </div>
-              <div class="proj-desc">A single-page application orchestrating data streams for earthquakes, wildfires, weather updates, air quality indexes, flights, and shipping maps from a dozen public APIs.</div>
-              <a class="proj-link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
+              <div class="proj-body">
+                <div class="proj-header">
+                  <span class="proj-title">Disaster Monitor</span>
+                  <span class="proj-stack">JS · Leaflet · FastAPI</span>
+                </div>
+                <div class="proj-desc">A single-page application orchestrating data streams for earthquakes, wildfires, weather updates, air quality indexes, flights, and shipping maps from a dozen public APIs.</div>
+                <a class="proj-link" href="https://thomaskopalidis.github.io/wheater_natula_disaster.html" target="_blank">View live →</a>
+              </div>
             </div>
           </div>
 
+          <!-- 2η Σελίδα Projects -->
           <div class="proj-page">
+            
+            <!-- Project 3: Nuclear Physics Encyclopedia -->
             <div class="proj-item">
-              <div class="proj-header">
-                <span class="proj-title">Nuclear Physics Encyclopedia</span>
-                <span class="proj-stack">React · SVG · Leaflet</span>
+              <div class="proj-logo-wrap">
+                <img src="logos/nuclear-logo.png" alt="Nuclear Physics Logo">
               </div>
-              <div class="proj-desc">A bilingual (Greek/English) interactive interface featuring radiation shielding visual explainers, a full periodic table, and live simulated laboratory metrics.</div>
-              <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
+              <div class="proj-body">
+                <div class="proj-header">
+                  <span class="proj-title">Nuclear Physics Encyclopedia</span>
+                  <span class="proj-stack">React · SVG · Leaflet</span>
+                </div>
+                <div class="proj-desc">A bilingual (Greek/English) interactive interface featuring radiation shielding visual explainers, a full periodic table, and live simulated laboratory metrics.</div>
+                <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/Nuclear-Physics" target="_blank">View live →</a>
+              </div>
             </div>
 
+            <!-- Project 4: Chest X-Ray Classifier -->
             <div class="proj-item">
-              <div class="proj-header">
-                <span class="proj-title">Chest X-Ray Classifier</span>
-                <span class="proj-stack">PyTorch · Lung segmentation</span>
+              <div class="proj-logo-wrap">
+                <img src="logos/xray-logo.png" alt="Chest X-Ray Logo">
               </div>
-              <div class="proj-desc">Binary pneumonia detector. An embedded lung segmentation preprocessing stage forces the neural network to focus exclusively on pulmonary tissue instead of learning image shortcuts.</div>
-              <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
+              <div class="proj-body">
+                <div class="proj-header">
+                  <span class="proj-title">Chest X-Ray Classifier</span>
+                  <span class="proj-stack">PyTorch · Lung segmentation</span>
+                </div>
+                <div class="proj-desc">Binary pneumonia detector. An embedded lung segmentation preprocessing stage forces the neural network to focus exclusively on pulmonary tissue instead of learning image shortcuts.</div>
+                <a class="proj-link" href="https://huggingface.co/spaces/leonardo999/pneumonia-detector-api" target="_blank">View live →</a>
+              </div>
             </div>
           </div>
 
