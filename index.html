@@ -170,7 +170,19 @@
   .exp-org { font-size: 0.9rem; font-weight: 500; color: var(--accent); margin-bottom: 8px; }
   .edu-uni { font-size: 0.9rem; color: var(--muted); }
   .exp-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
-
+  /* EDUCATION LOGOS */
+  .edu-item { grid-template-columns: 120px 1fr 56px; align-items: center; }
+  .edu-logo-wrap {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--faint);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    justify-self: end;
+  }
+  .edu-logo-wrap img { width: 80%; height: 80%; object-fit: contain; }
   /* PROJECTS / CODE */
   .proj-item { background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--faint); margin-bottom: 20px; transition: transform 0.2s, box-shadow 0.2s; }
   .proj-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
@@ -238,6 +250,8 @@
     .top-nav { flex-wrap: wrap; gap: 16px; width: 100%; }
     .top-nav a { padding: 8px 0; }
     .exp-item, .edu-item { grid-template-columns: 1fr; gap: 8px; }
+    .edu-item { grid-template-columns: 1fr; }
+    .edu-logo-wrap { justify-self: start; margin-top: 8px; }
     .eu-grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -472,6 +486,9 @@
           <div class="edu-degree">MSc, Artificial Intelligence &amp; Deep Learning</div>
           <div class="edu-uni">University of West Attica</div>
         </div>
+        <div class="edu-logo-wrap">
+          <img src="assets/uniwa-logo.png" alt="University of West Attica logo">
+        </div>
       </div>
       
       <div class="edu-item">
@@ -480,6 +497,9 @@
           <div class="edu-degree">MSc, Health Statistics &amp; Data Analytics</div>
           <div class="edu-uni">Aristotle University of Thessaloniki, Medical School — Grade: Excellent</div>
         </div>
+        <div class="edu-logo-wrap">
+          <img src="assets/hsda-logo.jpg" alt="MSc Health Statistics & Data Analytics logo">
+        </div>
       </div>
       
       <div class="edu-item">
@@ -487,6 +507,9 @@
         <div>
           <div class="edu-degree">BSc, Physics</div>
           <div class="edu-uni">Aristotle University of Thessaloniki — Specialization: Medical &amp; Nuclear Physics, Grade: Very Good</div>
+        </div>
+        <div class="edu-logo-wrap">
+          <img src="assets/auth-logo.png" alt="Aristotle University of Thessaloniki logo">
         </div>
       </div>
     </section>
