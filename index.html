@@ -256,14 +256,14 @@
     display: flex;         /* Οριζόντια διάταξη: Logo αριστερά, Body δεξιά */
     gap: 24px; 
     align-items: flex-start;
-    width: 100%;           /* Διασφάλιση πλήρους πλάτους */
+    width: 100%;           
   }
   .proj-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
   
-  /* Το λευκό στρογγυλεμένο κουτί για το λογότυπο του Project */
+  /* Το λευκό στρογγυλεμένο κουτί για το λογότυπο του Project (110x75px) */
   .proj-logo-wrap {
-    width: 140px;
-    height: 95px;
+    width: 110px;
+    height: 75px;
     background: #ffffff;
     border: 1px solid var(--faint);
     border-radius: 8px;
@@ -273,14 +273,13 @@
     flex-shrink: 0;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    padding: 4px;
+    padding: 4px;          
   }
   .proj-logo-wrap img {
-    width: 95%;            /* Αυξήθηκε από 100% σε συνδυασμό με την αφαίρεση του height */
-    height: auto;          /* Αφήνουμε το height αυτόματο για να μην ζορίζεται η εικόνα και μικραίνει */
-    max-height: 90%;       /* Περιορισμός για να μην ξεχειλίζει κάθετα */
+    width: 90%;
+    height: auto;
+    max-height: 85%;
     object-fit: contain;
-    transform: scale(1.05); /* Μικρό safe zoom-in για να γεμίσει το μάτι */
   }
   
   /* Το δεξί μέρος της κάρτας με τα κείμενα */
@@ -288,18 +287,17 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    min-width: 0;          /* Αποτρέπει το text overflow στα flex σενάρια */
+    min-width: 0;          
   }
   .proj-header { 
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
-    gap: 12px; 
+    gap: 16px; 
     flex-wrap: wrap; 
-    margin-bottom: 12px; 
+    margin-bottom: 14px; 
   }
   .proj-title { font-size: 1.15rem; font-weight: 600; color: var(--ink); }
-  .proj-stack { font-size: 0.75rem; font-weight: 600; background: var(--bg); padding: 4px 12px; border-radius: 20px; color: var(--accent); }
   .proj-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; text-align: left; }
   .proj-link { font-size: 0.85rem; font-weight: 500; color: var(--accent); display: inline-flex; align-items: center; }
 
@@ -308,7 +306,7 @@
   .proj-pages { overflow: hidden; width: 100%; }
   .proj-page {
     display: none;
-    grid-template-columns: 1fr; /* ΔΙΟΡΘΩΣΗ: 1 project ανά σειρά για πλήρες, καθαρό πλάτος */
+    grid-template-columns: 1fr; /* 1 project ανά σειρά για πλήρες, καθαρό πλάτος */
     gap: 0;
     width: 100%;
   }
@@ -338,55 +336,24 @@
     background: var(--faint); cursor: pointer; transition: 0.2s;
   }
   .proj-dot.active { background: var(--accent); width: 22px; border-radius: 4px; }
-  
-  /* Responsive προσαρμογή για κινητά */
-  @media (max-width: 550px) {
-    .proj-item {
-      flex-direction: column; 
-      align-items: flex-start;
-      gap: 16px;
-      padding: 20px;
-    }
-    .proj-logo-wrap {
-      width: 100px;
-      height: 68px;
-    }
-    .proj-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 6px;
-    }
-   /* TECH BADGES GRAPHICS IN PROJECTS */
+
+  /* TECH BADGES GRAPHICS IN PROJECTS */
   .proj-tech-badges {
     display: flex;
     gap: 12px;
     align-items: center;
     flex-wrap: wrap;
   }
-
   .proj-tech-badges img {
-    width: 24px;          /* Ιδανικό μέγεθος για ευκρίνεια χωρίς να ενοχλεί το κείμενο */
+    width: 24px;          
     height: 24px;
     object-fit: contain;
     transition: transform 0.2s ease, filter 0.2s ease;
     cursor: pointer;
   }
-
-  /* Εφέ hover: Μικρό μεγέθυνση και ένταση στο χρώμα */
   .proj-tech-badges img:hover {
     transform: scale(1.2);
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
-  }
-
-  /* Προσαρμογή του header της κάρτας για σωστό vertical alignment */
-  .proj-header { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    gap: 16px; 
-    flex-wrap: wrap; 
-    margin-bottom: 14px; 
-  }
   }
   /* PUBLICATIONS */
   .pub-item { margin-bottom: 24px; padding-left: 16px; border-left: 3px solid var(--accent-light); transition: border-color 0.2s; }
@@ -489,17 +456,40 @@
 
   footer { text-align: center; padding: 32px 6vw; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--faint); }
 
+  /* RESPONSIVE MEDIA QUERIES (FIXED BRACKETS) */
   @media (max-width: 768px) {
     header { height: auto; flex-direction: column; padding: 16px 5vw; align-items: flex-start; gap: 12px; }
     .top-nav { flex-wrap: wrap; gap: 16px; width: 100%; }
     .top-nav a { padding: 8px 0; }
-    .exp-item, .edu-item { grid-template-columns: 1fr; gap: 8px; }
-    .edu-item { grid-template-columns: 1fr; }
-    .edu-logo-wrap { justify-self: start; margin-top: 8px; }
+    .exp-item, .edu-item { grid-template-columns: 1fr; gap: 16px; }
+    .edu-logo-wrap, .exp-logo-wrap { justify-self: start; }
     .eu-grid { grid-template-columns: 1fr; }
-   #quick-preview { 
-      grid-template-columns: 1fr !important; 
-      gap: 32px !important; 
+    #quick-preview { grid-template-columns: 1fr !important; gap: 32px !important; }
+  }
+
+  @media (max-width: 550px) {
+    .proj-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+    }
+    .proj-logo-wrap {
+      width: 100px;
+      height: 68px;
+    }
+    .proj-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .cert-item {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cert-icon {
+      width: 110px;
+      height: 70px;
     }
   }
 </style>
