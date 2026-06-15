@@ -389,7 +389,23 @@
   .skill-group { background: var(--surface); border: 1px solid var(--faint); border-radius: 12px; padding: 20px; }
   .skill-group-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 16px; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-tag { font-size: 0.85rem; background: var(--bg); color: var(--ink); padding: 6px 12px; border-radius: 6px; font-weight: 500; }
+  .skill-tag { 
+    font-size: 0.85rem; 
+    background: var(--bg); 
+    color: var(--ink); 
+    padding: 6px 12px; 
+    border-radius: 6px; 
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .skill-tag img {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
 
   /* CERTIFICATIONS */
   /* CERTIFICATIONS (RE-DESIGNED) */
@@ -557,32 +573,66 @@
     </div>
 
     <!-- Tools & Skills -->
-    <section id="skills-section">
+   <section id="skills-section">
       <div class="section-label">Tools &amp; Skills</div>
       <div class="skills-grid">
         <div class="skill-group">
           <div class="skill-group-label">Languages &amp; Data</div>
-          <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">scikit-learn</span></div>
+          <div class="skill-tags">
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/python/3776AB" alt="">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/pandas/150458" alt="">pandas</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/numpy/013243" alt="">NumPy</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="">scikit-learn</span>
+          </div>
         </div>
         <div class="skill-group">
           <div class="skill-group-label">Deep Learning &amp; LLMs</div>
-          <div class="skill-tags"><span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Hugging Face</span><span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span></div>
+          <div class="skill-tags">
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/pytorch/EE4C2C" alt="">PyTorch</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="">TensorFlow</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/huggingface/000000" alt="">Hugging Face</span>
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">LangGraph</span>
+          </div>
         </div>
         <div class="skill-group">
           <div class="skill-group-label">RAG &amp; Agents</div>
-          <div class="skill-tags"><span class="skill-tag">ChromaDB</span><span class="skill-tag">FAISS</span><span class="skill-tag">Groq</span><span class="skill-tag">Ollama</span><span class="skill-tag">CrewAI</span></div>
+          <div class="skill-tags">
+            <span class="skill-tag">ChromaDB</span>
+            <span class="skill-tag">FAISS</span>
+            <span class="skill-tag">Groq</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/ollama/000000" alt="">Ollama</span>
+            <span class="skill-tag">CrewAI</span>
+          </div>
         </div>
         <div class="skill-group">
           <div class="skill-group-label">Infrastructure</div>
-          <div class="skill-tags"><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">Docker</span><span class="skill-tag">Git</span><span class="skill-tag">PostgreSQL</span></div>
+          <div class="skill-tags">
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="">FastAPI</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/flask/000000" alt="">Flask</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="">Docker</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/git/F05032" alt="">Git</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="">PostgreSQL</span>
+          </div>
         </div>
         <div class="skill-group">
           <div class="skill-group-label">Visualisation</div>
-          <div class="skill-tags"><span class="skill-tag">Streamlit</span><span class="skill-tag">Plotly</span><span class="skill-tag">Tableau</span><span class="skill-tag">Leaflet</span></div>
+          <div class="skill-tags">
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/streamlit/FF4B4B" alt="">Streamlit</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/plotly/3F4F75" alt="">Plotly</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/tableau/E97627" alt="">Tableau</span>
+            <span class="skill-tag"><img src="https://cdn.simpleicons.org/leaflet/199900" alt="">Leaflet</span>
+          </div>
         </div>
         <div class="skill-group">
           <div class="skill-group-label">Domains</div>
-          <div class="skill-tags"><span class="skill-tag">Clinical AI</span><span class="skill-tag">NLP / NER</span><span class="skill-tag">Computer Vision</span><span class="skill-tag">Time Series</span></div>
+          <div class="skill-tags">
+            <span class="skill-tag">Clinical AI</span>
+            <span class="skill-tag">NLP / NER</span>
+            <span class="skill-tag">Computer Vision</span>
+            <span class="skill-tag">Time Series</span>
+          </div>
         </div>
       </div>
     </section>
