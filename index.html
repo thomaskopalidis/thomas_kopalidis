@@ -105,7 +105,7 @@
     background-color: var(--accent-light);
     color: var(--accent);
   }
-  .dropdown:hover .dropdown-content {
+  .dropdown-content.open {
   display: block;
   animation: dropFade 0.2s ease-in-out;
   }
@@ -544,11 +544,13 @@
     <a href="#cv" class="tab-link active" data-target="tab-cv">CV</a>
     <a href="#experience" class="tab-link" data-target="tab-experience">Work Experience</a>
     <div class="dropdown">
-      <a href="#rnd" class="tab-link" data-target="tab-rnd">R&amp;D ▾</a>
-      <div class="dropdown-content">
-        <a href="#publications" class="anchor-link" data-target="tab-rnd" data-scroll="publications">Publications</a>
-        <a href="#projects" class="anchor-link" data-target="tab-rnd" data-scroll="projects">Projects / Code</a>
-      </div>
+    <a href="#rnd" class="tab-link" data-target="tab-rnd">R&amp;D ▾</a>
+     <div class="dropdown-content">
+      <a href="#research" class="anchor-link" data-target="tab-rnd" data-scroll="research">EU Projects</a>
+      <a href="#publications" class="anchor-link" data-target="tab-rnd" data-scroll="publications">Publications</a>
+    <a href="#projects" class="anchor-link" data-target="tab-rnd" data-scroll="projects">Projects / Code</a>
+  </div>
+</div>
     </div>
     <a href="#education" class="tab-link" data-target="tab-education">Education</a>
     <a href="#certifications" class="tab-link" data-target="tab-certifications">Certifications</a>
@@ -1177,41 +1179,52 @@ All rights reserved. ©</footer>
   const tabContents = document.querySelectorAll('.tab-content');
   const anchorLinks = document.querySelectorAll('.anchor-link');
 
-  // SPA Tab Activation Core Engine
   function activateTab(targetId) {
     tabContents.forEach(content => content.classList.remove('active'));
     tabLinks.forEach(link => link.classList.remove('active'));
-    
     document.getElementById(targetId).classList.add('active');
-    
-    // Cross-match navigation items with targets
-    const activeLink = Array.from(tabLinks).find(link => link.getAttribute('data-target') === targetId);
+    const activeLink = Array.from(tabLinks).find(
+      link => link.getAttribute('data-target') === targetId
+    );
     if (activeLink) activeLink.classList.add('active');
   }
 
-  // Intercept normal tab actions
+  // R&D κουμπί → toggle dropdown, μην αλλάζεις tab
   tabLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
+      const dropdown = link.closest('.dropdown');
+      if (dropdown) {
+        const content = dropdown.querySelector('.dropdown-content');
+        content.classList.toggle('open');
+        return;
+      }
       activateTab(link.getAttribute('data-target'));
     });
   });
 
-  // Handle deep sub-routing inside components via dropdown anchors
+  // Anchor links μέσα στο dropdown
   anchorLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
+      document.querySelectorAll('.dropdown-content').forEach(d => d.classList.remove('open'));
       const targetTab = link.getAttribute('data-target');
       const targetScroll = link.getAttribute('data-scroll');
-      
       activateTab(targetTab);
-      // Brief layout propagation safety offset before smooth scrolling execution
       setTimeout(() => {
         document.getElementById(targetScroll).scrollIntoView({ behavior: 'smooth' });
       }, 50);
     });
   });
-// Projects carousel
+
+  // Κλείσε dropdown αν κάνεις click αλλού
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown-content').forEach(d => d.classList.remove('open'));
+    }
+  });
+
+  // Projects carousel
   const projPages = document.querySelectorAll('.proj-page');
   const projDots = document.querySelectorAll('.proj-dot');
   const projPrev = document.getElementById('proj-prev');
