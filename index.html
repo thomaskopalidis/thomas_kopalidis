@@ -31,6 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;800&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <style>
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -240,6 +241,8 @@ button:focus-visible{outline:2px solid var(--far);outline-offset:2px}
   h1#h1{font-size:28px}
 }
 .sharerow{margin-top:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tiles-muted{filter:grayscale(.9) contrast(.85) brightness(1.06)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tiles-muted{filter:invert(1) hue-rotate(180deg) grayscale(.9) brightness(.8) contrast(.85)}}
 </style>
 </head>
 <body>
@@ -358,6 +361,8 @@ button:focus-visible{outline:2px solid var(--far);outline-offset:2px}
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
 <script src="areas.js"></script>
 <script src="lines.js"></script>
 <script src="app.js"></script>

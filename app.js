@@ -446,9 +446,25 @@ function carOf(a){
 const map = L.map("map", {zoomSnap:0.5, worldCopyJump:false});
 const dark = matchMedia("(prefers-color-scheme: dark)").matches;
 const ATTR_OSM = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-// Υπόβαθρο: μόνο πλακίδια OpenStreetMap (δωρεάν, χωρίς κλειδί)
-const osmMuted = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution: ATTR_OSM}).addTo(map);   // κανονικά χρώματα OpenStreetMap
-// Αν δεν φορτώσουν πλακίδια (π.χ. χωρίς internet), δείχνουμε το περίγραμμα της Ελλάδας
+// Υπόβαθρο: OpenFreeMap (δεδομένα OpenStreetMap, ίδιο απαλό στυλ «Positron» με τον παλιό χάρτη, χωρίς κλειδί).
+// Αν δεν φορτώσει (π.χ. παλιός browser χωρίς WebGL), πέφτουμε σε γκρι πλακίδια OpenStreetMap.
+const ATTR_OFM = '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> &copy; <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> '+ATTR_OSM;
+const osmMuted = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, className:"tiles-muted", attribution: ATTR_OSM});
+let baseLayer = null;
+try{
+  const webgl = (()=>{ try{ const c=document.createElement("canvas"); return !!(c.getContext("webgl2")||c.getContext("webgl")); }catch(e){ return false; } })();
+  if(L.maplibreGL && window.maplibregl && webgl){
+    baseLayer = L.maplibreGL({style:`https://tiles.openfreemap.org/styles/${dark?"dark":"positron"}`, attribution: ATTR_OFM}).addTo(map);
+    let fell=false;
+    const glMap = () => baseLayer.getMaplibreMap && baseLayer.getMaplibreMap();
+    const fallback=()=>{ const g=glMap(); if(fell || (g && g.isStyleLoaded && g.isStyleLoaded())) return; fell=true;
+      try{ map.removeLayer(baseLayer); }catch(e){} osmMuted.addTo(map); };
+    // ο χάρτης GL δημιουργείται μόλις ο Leaflet πάρει θέση, οπότε συνδέουμε το σφάλμα τότε
+    baseLayer.on("add", ()=>{ const g=glMap(); if(g) g.on("error", ev=>{ if(!(g.isStyleLoaded && g.isStyleLoaded())) fallback(); }); });
+    setTimeout(fallback, 10000);   // αν το στυλ δεν φορτώσει σε 10″
+  }
+}catch(e){ baseLayer=null; }
+if(!baseLayer) osmMuted.addTo(map);
 map.createPane("land").style.zIndex = 150;
 let landShown=false;
 osmMuted.on("tileerror",()=>{ if(landShown) return; landShown=true;
@@ -555,7 +571,7 @@ function styleFor(a, i, fa){
            : state.mode==="cats" ? (state.filter===c || (two && state.filter===a.cat2)) : state.filter===b;
   const empty = (state.mode==="cats" && c==="none") || (state.mode!=="cats" && !b);
   if(state.sel===i){ border = tok("sel"); w = 3.5; dash = null; }
-  return { fillColor: fill, fillOpacity: !on ? .06 : empty ? .15 : .45, color: border, weight: w, opacity: on ? .9 : .25, dashArray: dash };
+  return { fillColor: fill, fillOpacity: !on ? .06 : empty ? .18 : .55, color: border, weight: w, opacity: on ? .9 : .25, dashArray: dash };
 }
 function labels(){
   const z = map.getZoom();
