@@ -16,7 +16,7 @@
 Τρέξε το osrm-times.html ή osrm_times.py και στείλε το αποτέλεσμα για να μπει στο `OSRM_TIMES` του app.js.
 
 ## Άδειες
-Υπόβαθρο: OpenFreeMap (δωρεάν, χωρίς κλειδί), © OpenMapTiles, δεδομένα © OpenStreetMap contributors (ODbL). Όρια δήμων: geoBoundaries (CC BY 4.0). Πληθυσμός: ΕΛΣΤΑΤ.
+Χάρτης και πλακίδια © OpenStreetMap contributors (ODbL). Όρια δήμων: geoBoundaries (CC BY 4.0). Πληθυσμός: ΕΛΣΤΑΤ.
 Για μεγάλη κίνηση, έλεγξε την πολιτική χρήσης πλακιδίων του OpenStreetMap (operations.osmfoundation.org/policies/tiles) ή χρησιμοποίησε δικό σου πάροχο.
 
 ## Αναφορά λάθους
