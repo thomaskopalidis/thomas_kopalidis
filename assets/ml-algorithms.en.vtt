@@ -1,0 +1,90 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.600
+If you draw the straight line closest to your data and read
+
+2
+00:00:04.600 --> 00:00:07.100
+new answers off it, you get linear regression. If you bend
+
+3
+00:00:07.100 --> 00:00:10.600
+that line into an S so it answers yes or no instead of a
+
+4
+00:00:10.600 --> 00:00:14.100
+number, you get logistic regression. If you stop drawing
+
+5
+00:00:14.100 --> 00:00:17.850
+lines and ask yes-or-no questions until you reach an answer,
+
+6
+00:00:17.850 --> 00:00:21.350
+you get a decision tree. If you grow 100 trees, each on a
+
+7
+00:00:21.350 --> 00:00:25.100
+random mix of the data, and let them vote on the answer, you
+
+8
+00:00:25.100 --> 00:00:28.600
+get a random forest. If you grow small trees one by one instead,
+
+9
+00:00:28.600 --> 00:00:30.100
+each fixing the mistakes
+
+10
+00:00:30.100 --> 00:00:33.600
+still left, you get gradient boosting. If you skip training
+
+11
+00:00:33.600 --> 00:00:37.100
+and let the five points closest to a new one vote on its
+
+12
+00:00:37.100 --> 00:00:40.350
+answer, you get k-nearest neighbours. If you hide the
+
+13
+00:00:40.350 --> 00:00:43.850
+answers, drop 3 centres, let each point join its nearest
+
+14
+00:00:43.850 --> 00:00:47.350
+centre, then move each centre to the middle of its group
+
+15
+00:00:47.350 --> 00:00:50.850
+until the groups settle, you get k-means. If you go back to
+
+16
+00:00:50.850 --> 00:00:54.350
+that S and feed many of them into layer after
+
+17
+00:00:54.350 --> 00:00:57.850
+layer, so together they can learn almost any pattern, you
+
+18
+00:00:57.850 --> 00:01:00.600
+get a neural network. If you make that network
+
+19
+00:01:00.600 --> 00:01:04.600
+huge and train it on mountains of text to score every
+
+20
+00:01:04.600 --> 00:01:08.600
+possible next word, you get an LLM. And if you zoom into
+
+21
+00:01:08.600 --> 00:01:12.600
+that LLM, you get mostly that same line and bend, set by
+
+22
+00:01:12.600 --> 00:01:13.900
+billions of numbers.
+
