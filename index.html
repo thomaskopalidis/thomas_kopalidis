@@ -611,6 +611,36 @@
     .top-nav .theme-btn { margin-top:12px; }
   }
 
+  /* Floating agent */
+  #agentFab { position:fixed; right:24px; bottom:24px; width:58px; height:58px; border-radius:50%; border:none; cursor:pointer; z-index:160;
+    background:#0f1411; color:#5fd394; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px rgba(15,20,17,.28), 0 0 0 4px rgba(95,211,148,.18); transition:transform .2s, box-shadow .2s; }
+  #agentFab:hover { transform:translateY(-2px) scale(1.04); box-shadow:0 14px 30px rgba(15,20,17,.32), 0 0 0 6px rgba(95,211,148,.22); }
+  #agentFab::after { content:''; position:absolute; top:6px; right:6px; width:11px; height:11px; border-radius:50%; background:#5fd394; border:2px solid #0f1411; }
+  #agentFab.on { transform:rotate(-8deg); }
+  #agentFab.on::after { display:none; }
+  .fab-tip { position:absolute; right:70px; white-space:nowrap; background:var(--ink); color:var(--bg); font:500 0.8rem var(--sans); padding:7px 12px; border-radius:8px; opacity:0; transform:translateX(6px); pointer-events:none; transition:opacity .2s, transform .2s; }
+  #agentFab:hover .fab-tip, #agentFab.hint .fab-tip { opacity:1; transform:none; }
+  #agentFab.on .fab-tip { opacity:0; }
+  #toTop { right:94px !important; bottom:31px !important; }
+  .agent-panel { position:fixed; right:24px; bottom:96px; width:380px; max-width:calc(100vw - 32px); height:480px; max-height:calc(100vh - 130px); z-index:160;
+    display:flex; flex-direction:column; animation:agentIn .22s ease; }
+  .agent-panel[hidden] { display:none; }
+  @keyframes agentIn { from { opacity:0; transform:translateY(12px) scale(.98); } to { opacity:1; transform:none; } }
+  .agent-panel .term-out { flex:1; height:auto; }
+  .agent-panel .term-bar button { background:none; border:none; color:#9aa89e; cursor:pointer; font-size:0.95rem; margin-left:12px; padding:0 2px; }
+  .agent-panel .term-bar button:hover { color:#fff; }
+  .agent-chips { display:flex; gap:6px; overflow-x:auto; padding:8px 14px; border-top:1px solid #232c26; scrollbar-width:none; }
+  .agent-chips::-webkit-scrollbar { display:none; }
+  .agent-chips button { flex-shrink:0; font:inherit; font-size:0.74rem; color:#c3d0c6; background:#18201b; border:1px solid #2b372f; border-radius:999px; padding:4px 10px; cursor:pointer; }
+  .agent-chips button:hover { color:#5fd394; border-color:#5fd394; }
+  @media (max-width:600px) {
+    #agentFab { right:16px; bottom:16px; width:54px; height:54px; }
+    #toTop { right:80px !important; bottom:21px !important; }
+    .agent-panel { right:8px; left:8px; bottom:80px; width:auto; max-width:none; height:70vh; }
+  }
+  @media print { #agentFab, .agent-panel { display:none !important; } }
+
   /* Terminal */
   #ask { padding-bottom:48px; }
   .term { --t-bg:#0f1411; --t-line:#232c26; --t-ink:#d9e4dc; --t-dim:#7f9184; --t-acc:#5fd394; --t-acc2:#f2c94c;
@@ -630,8 +660,8 @@
   .t-sys { color:var(--t-dim); }
   .term-in { display:flex; align-items:center; gap:10px; padding:12px 18px 16px; border-top:1px solid var(--t-line); }
   .term-prompt { color:var(--t-acc); white-space:nowrap; }
-  #termInput { flex:1; min-width:0; background:transparent; border:none; outline:none; color:#fff; font:inherit; caret-color:var(--t-acc); }
-  #termInput::placeholder { color:#55645a; }
+  #termInput, #agentInput { flex:1; min-width:0; background:transparent; border:none; outline:none; color:#fff; font:inherit; caret-color:var(--t-acc); }
+  #termInput::placeholder, #agentInput::placeholder { color:#55645a; }
   .term-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
   .term-chips button { font:500 0.8rem var(--sans); color:var(--ink); background:var(--surface); border:1px solid var(--faint); border-radius:999px; padding:6px 13px; cursor:pointer; transition:border-color .2s, color .2s; }
   .term-chips button:hover { border-color:var(--accent); color:var(--accent); }
@@ -1608,6 +1638,23 @@ Implement data science models on datasets through hands-on practice exercises.</
 </footer>
 <button id="toTop" type="button" aria-label="Back to top">↑</button>
 
+<!-- Floating agent -->
+<button id="agentFab" type="button" aria-label="Ask my AI agent" aria-expanded="false" aria-controls="agentPanel">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="4" y="7" width="16" height="12" rx="4"/><path d="M12 7V4"/><circle cx="12" cy="3.2" r="1"/><circle cx="9" cy="13" r="1.2" fill="currentColor"/><circle cx="15" cy="13" r="1.2" fill="currentColor"/><path d="M2 12v3M22 12v3"/>
+  </svg>
+  <span class="fab-tip">Ask me anything</span>
+</button>
+<div id="agentPanel" class="term agent-panel" role="dialog" aria-label="Ask Thomas's agent" hidden>
+  <div class="term-bar"><i></i><i></i><i></i><span>ask-thomas — agent</span><button id="agentClose" type="button" aria-label="Close">✕</button></div>
+  <div class="term-out" id="agentOut" aria-live="polite"></div>
+  <div class="agent-chips" id="agentChips"><button type="button">help</button><button type="button">now</button><button type="button">projects</button><button type="button">Do you teach?</button><button type="button">contact</button></div>
+  <form class="term-in" id="agentForm" autocomplete="off">
+    <label for="agentInput" class="term-prompt">~$</label>
+    <input id="agentInput" type="text" spellcheck="false" placeholder="Ask a question…" aria-label="Ask the agent">
+  </form>
+</div>
+
 <script>
   const tabLinks = document.querySelectorAll('.tab-link');
   const tabContents = document.querySelectorAll('.tab-content');
@@ -1788,8 +1835,7 @@ document.querySelectorAll(".geo-bot").forEach(function(box){
   window.addEventListener('beforeprint', function () { document.querySelectorAll('details').forEach(function (d) { d.open = true; }); });
 
   /* ---------- Terminal ---------- */
-  var out = document.getElementById('termOut'), form = document.getElementById('termForm'), input = document.getElementById('termInput');
-  if (!out) return;
+  if (!document.getElementById('termOut')) return;
   var EMAIL = 'thomaskopalidis@yahoo.com';
   function go(tab) { return '<a href="#" data-go="' + tab + '">open ↗</a>'; }
 
@@ -1839,7 +1885,7 @@ document.querySelectorAll(".geo-bot").forEach(function(box){
   function answer(q) {
     var n = norm(q);
     var first = n.split(' ')[0];
-    if (first === 'clear') { out.innerHTML = ''; return null; }
+    if (first === 'clear') return null;
     if (first === 'theme') { document.getElementById('themeBtn').click(); return 'Theme switched.'; }
     if (first === 'cv') { var a = document.querySelector('.hero-actions a'); if (a) window.open(a.href, '_blank'); return 'Opening my CV…'; }
     if (n === 'sudo hire thomas') return 'Permission granted ✅ Drop me a line at <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>';
@@ -1856,42 +1902,60 @@ document.querySelectorAll(".geo-bot").forEach(function(box){
     return 'I don\'t know that one yet. Try <span class="k">help</span>, or ask Thomas directly: <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>';
   }
 
-  var busy = false;
-  function line(html, cls) { var d = document.createElement('div'); d.className = 't-line ' + cls; d.innerHTML = html; out.appendChild(d); out.scrollTop = out.scrollHeight; return d; }
-  function typeOut(html) {
-    var d = line('', 't-res');
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { d.innerHTML = html; out.scrollTop = out.scrollHeight; busy = false; return; }
-    // type plain text, then swap in the rich version so links work
-    var tmp = document.createElement('div'); tmp.innerHTML = html; var plain = tmp.textContent, i = 0;
-    var step = Math.max(2, Math.round(plain.length / 90));
-    (function tick() {
-      i += step; d.textContent = plain.slice(0, i); out.scrollTop = out.scrollHeight;
-      if (i < plain.length) setTimeout(tick, 12); else { d.innerHTML = html; out.scrollTop = out.scrollHeight; busy = false; }
-    })();
+  function setup(out, form, input, chips, welcome, onGo) {
+    var busy = false;
+    function line(html, cls) { var d = document.createElement('div'); d.className = 't-line ' + cls; d.innerHTML = html; out.appendChild(d); out.scrollTop = out.scrollHeight; return d; }
+    function typeOut(html) {
+      var d = line('', 't-res');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { d.innerHTML = html; out.scrollTop = out.scrollHeight; busy = false; return; }
+      // type plain text, then swap in the rich version so links work
+      var tmp = document.createElement('div'); tmp.innerHTML = html; var plain = tmp.textContent, i = 0;
+      var step = Math.max(2, Math.round(plain.length / 90));
+      (function tick() {
+        i += step; d.textContent = plain.slice(0, i); out.scrollTop = out.scrollHeight;
+        if (i < plain.length) setTimeout(tick, 12); else { d.innerHTML = html; out.scrollTop = out.scrollHeight; busy = false; }
+      })();
+    }
+    function run(q) {
+      q = q.trim(); if (!q || busy) return;
+      var c = line('', 't-cmd'); c.innerHTML = '<b>visitor@thomas:~$</b> '; c.appendChild(document.createTextNode(q));
+      var res = answer(q);
+      if (res === null) { out.innerHTML = ''; return; }
+      busy = true; setTimeout(function () { typeOut(res); }, 180);
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); var v = input.value; input.value = ''; run(v); });
+    if (chips) chips.addEventListener('click', function (e) { if (e.target.tagName === 'BUTTON') { run(e.target.textContent); } });
+    out.addEventListener('click', function (e) {
+      var a = e.target.closest('a[data-go]'); if (!a) { input.focus({ preventScroll:true }); return; }
+      e.preventDefault(); activateTab(a.getAttribute('data-go')); window.scrollTo({ top: 0, behavior: 'smooth' }); if (onGo) onGo();
+    });
+    // command history with ↑ / ↓
+    var hist = [], hi = 0;
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && input.value.trim()) { hist.push(input.value.trim()); hi = hist.length; }
+      if (e.key === 'ArrowUp' && hist.length) { hi = Math.max(0, hi - 1); input.value = hist[hi]; e.preventDefault(); }
+      if (e.key === 'ArrowDown' && hist.length) { hi = Math.min(hist.length, hi + 1); input.value = hist[hi] || ''; e.preventDefault(); }
+    });
+    line(welcome, 't-sys');
   }
-  function run(q) {
-    q = q.trim(); if (!q || busy) return;
-    var c = line('', 't-cmd'); c.innerHTML = '<b>visitor@thomas:~$</b> '; c.appendChild(document.createTextNode(q));
-    var res = answer(q);
-    if (res === null) return;
-    busy = true; setTimeout(function () { typeOut(res); }, 180);
-  }
-  form.addEventListener('submit', function (e) { e.preventDefault(); var v = input.value; input.value = ''; run(v); });
-  document.getElementById('termChips').addEventListener('click', function (e) { if (e.target.tagName === 'BUTTON') { run(e.target.textContent); } });
-  out.addEventListener('click', function (e) {
-    var a = e.target.closest('a[data-go]'); if (!a) { input.focus({ preventScroll:true }); return; }
-    e.preventDefault(); activateTab(a.getAttribute('data-go')); window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  // command history with ↑ / ↓
-  var hist = [], hi = 0;
-  form.addEventListener('submit', function () {}, true);
-  input.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' && input.value.trim()) { hist.push(input.value.trim()); hi = hist.length; }
-    if (e.key === 'ArrowUp' && hist.length) { hi = Math.max(0, hi - 1); input.value = hist[hi]; e.preventDefault(); }
-    if (e.key === 'ArrowDown' && hist.length) { hi = Math.min(hist.length, hi + 1); input.value = hist[hi] || ''; e.preventDefault(); }
-  });
-  line('Welcome to <span style="color:#5fd394">ask-thomas</span> v1.0, a terminal that knows my CV.\nType <span style="color:#5fd394">help</span>, ask a question, or tap a suggestion below.', 't-sys');
+
+  var WELCOME = 'Welcome to <span style="color:#5fd394">ask-thomas</span> v1.0, a terminal that knows my CV.\nType <span style="color:#5fd394">help</span>, ask a question, or tap a suggestion below.';
+  setup(document.getElementById('termOut'), document.getElementById('termForm'), document.getElementById('termInput'), document.getElementById('termChips'), WELCOME);
+
+  /* ---------- Floating agent: follows the visitor on every tab ---------- */
+  var fab = document.getElementById('agentFab'), panel = document.getElementById('agentPanel');
+  var aIn = document.getElementById('agentInput');
+  function openAgent() { panel.hidden = false; fab.setAttribute('aria-expanded', 'true'); fab.classList.add('on'); setTimeout(function () { aIn.focus(); }, 60); }
+  function closeAgent() { panel.hidden = true; fab.setAttribute('aria-expanded', 'false'); fab.classList.remove('on'); }
+  setup(document.getElementById('agentOut'), document.getElementById('agentForm'), aIn, document.getElementById('agentChips'),
+        'Hi 👋 I am Thomas\'s agent. Ask me anything about his work, projects or teaching, or type <span style="color:#5fd394">help</span>.',
+        function () { if (window.innerWidth < 600) closeAgent(); });
+  fab.addEventListener('click', function (e) { e.stopPropagation(); panel.hidden ? openAgent() : closeAgent(); });
+  document.getElementById('agentClose').addEventListener('click', closeAgent);
+  panel.addEventListener('click', function (e) { e.stopPropagation(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) closeAgent(); });
+  setTimeout(function () { fab.classList.add('hint'); setTimeout(function () { fab.classList.remove('hint'); }, 4200); }, 2500);
 })();
 </script>
 </body>
