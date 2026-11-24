@@ -597,7 +597,7 @@
   .menu-btn[aria-expanded="true"] span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
   .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity:0; }
   .menu-btn[aria-expanded="true"] span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
-  @media (max-width:820px) {
+  @media (max-width:1000px) {
     header { padding:0 5vw !important; height:64px !important; flex-direction:row !important; flex-wrap:nowrap !important; align-items:center !important; justify-content:space-between !important; }
     .brand { font-size:1.1rem; }
     .menu-btn { display:flex; flex-shrink:0; }
@@ -788,6 +788,7 @@
 </div>
     <a href="#learn" class="tab-link" data-target="tab-learn">Learn</a>
     <a href="#education" class="tab-link" data-target="tab-education">Education</a>
+    <a href="#certifications" class="tab-link" data-target="tab-certifications">Certifications</a>
     <a href="#contact" class="tab-link" data-target="tab-contact">Contact</a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Dark / light">☾</button>
   </nav>
@@ -1467,8 +1468,7 @@ I also teach: I like building AI that explains science as clearly as a good teac
             <li>Learn where and how each Apostle died, with his feast day, and which routes rest only on tradition.</li>
             <li>Browse further sections on the Saints and on image rights and sources.</li>
           </ul>
-          <!-- TODO: βάλε εδώ το link της εφαρμογής -->
-          <a class="proj-link" href="#" target="_blank" rel="noopener">Explore the map &rarr;</a>
+          <a class="proj-link" href="vioi-agion.html" target="_blank" rel="noopener">Explore the map &rarr;</a>
         </div>
       </div>
     </section>
@@ -1516,7 +1516,9 @@ I also teach: I like building AI that explains science as clearly as a good teac
       </div>
     </div>
   </section>
+  </div>
 
+  <div id="tab-certifications" class="tab-content">
     <section id="certifications">
       <div class="section-label">Certifications</div>
       
@@ -1871,10 +1873,10 @@ document.querySelectorAll(".geo-bot").forEach(function(box){
   });
 
   /* ---------- Deep links: #learn, #education ... ---------- */
-  var hashToTab = { '#cv':'tab-cv', '#experience':'tab-experience', '#rnd':'tab-rnd', '#learn':'tab-learn', '#education':'tab-education', '#certifications':'tab-education', '#contact':'tab-contact' };
+  var hashToTab = { '#cv':'tab-cv', '#experience':'tab-experience', '#rnd':'tab-rnd', '#learn':'tab-learn', '#education':'tab-education', '#certifications':'tab-certifications', '#contact':'tab-contact' };
   function openFromHash() {
     var t = hashToTab[location.hash];
-    if (t) { activateTab(t); if (location.hash === '#certifications') setTimeout(function(){ document.getElementById('certifications').scrollIntoView(); }, 60); }
+    if (t) { activateTab(t); }
   }
   openFromHash();
   document.querySelectorAll('.tab-link').forEach(function (l) {
@@ -1894,7 +1896,7 @@ document.querySelectorAll(".geo-bot").forEach(function(box){
     experience: '<span class="k">2026–now </span> AI Engineer · Satori Analytics\n<span class="k">2026     </span> AI Engineer (Agentic RAG) · PwC Greece\n<span class="k">2025     </span> Operations Analyst · Elysium Hospitality\n<span class="k">2021–2025</span> Data Scientist &amp; AI Engineer · CERTH ITI (6 EU projects)\n<span class="k">2018–now </span> Independent Tutor · Physics, Maths, Informatics\n<span class="k">2019     </span> Medical Physics Intern · AHEPA Hospital\n' + go('tab-experience'),
     projects: '› Where (not) to live: every neighbourhood of Athens &amp; Thessaloniki, rated on a map\n› Agentic RAG for Policy Q&amp;A (PwC): citation-backed answers over versioned docs\n› European Demographics: ML forecasting dashboard\n› Disaster Monitor, Chest X-Ray Classifier, Car Price API\n' + go('tab-rnd'),
     skills: '<span class="k">LLMs &amp; Agents</span>  LangGraph, LangChain, CrewAI, MCP, RAG, Ollama, Groq\n<span class="k">Deep Learning </span>  PyTorch, TensorFlow, Hugging Face, CNNs, NLP / NER\n<span class="k">Data &amp; Infra  </span>  Python, FastAPI, Flask, Docker, PostgreSQL, ChromaDB, FAISS, MLflow\n<span class="k">Cloud        </span>  AWS Bedrock, Azure OpenAI\n<span class="k">Visualisation</span>  Plotly, Streamlit, Power BI, Tableau, Leaflet',
-    education: '› MSc AI &amp; Deep Learning · University of West Attica (in progress)\n› MSc Health Statistics &amp; Data Analytics · AUTH Medical School · Excellent\n› BSc Physics · AUTH · Medical &amp; Nuclear Physics\nCertifications: Google Cloud Generative AI Leader, Microsoft Azure AI, ReGeneration Academy, ML I &amp; II and more.\n' + go('tab-education'),
+    education: '› MSc AI &amp; Deep Learning · University of West Attica (in progress)\n› MSc Health Statistics &amp; Data Analytics · AUTH Medical School · Excellent\n› BSc Physics · AUTH · Medical &amp; Nuclear Physics\nCertifications: Google Cloud Generative AI Leader, Microsoft Azure AI, ReGeneration Academy, ML I &amp; II and more.\n' + go('tab-education') + '  certifications ' + go('tab-certifications'),
     teaching: 'I have tutored Physics, Maths and Informatics since 2018: secondary and college students, plus university-level Biomechanics.\nCurrently: a Grade 10 student at Pinewood American College; previously students of Anatolia College.\nFor students and curious minds, see Explore &amp; Learn: ' + go('tab-learn'),
     contact: 'Email    <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>\nLinkedIn <a href="https://www.linkedin.com/in/thomas-kopalidis/" target="_blank" rel="noopener">in/thomas-kopalidis</a>\nGitHub   <a href="https://github.com/thomaskopalidis/" target="_blank" rel="noopener">thomaskopalidis</a>'
   };
@@ -1916,7 +1918,7 @@ document.querySelectorAll(".geo-bot").forEach(function(box){
     [['thesis','avatar','διπλωματικ'], 'My MSc thesis (UNIWA) is an AI assistant for Physics education: a multimodal conversational agent with a realistic avatar. My first MSc thesis (AUTH) studied how short-term temperature exposure affects paediatric hospital admissions in Athens.'],
     [['physics','physicist','why ai','background','φυσικ'], 'I studied Physics at AUTH, specialising in Medical &amp; Nuclear Physics. Statistics and modelling led me to data science, then to ML and LLM systems. Physics still shapes how I debug: measure first, then explain.'],
     [['study','studies','degree','msc','master','university','education','σπουδ','πτυχι'], 'EDUCATION'],
-    [['cert','certificate','certification','google','azure','microsoft','coursera','udemy'], 'Certifications include Google Cloud Generative AI Leader, Microsoft Azure AI Essentials, the ReGeneration Academy (Coca-Cola), EY &amp; Microsoft AI Skills Passport, Machine Learning I &amp; II (Univ. of London, Duke) and a PostgreSQL bootcamp. ' + go('tab-education')],
+    [['cert','certificate','certification','google','azure','microsoft','coursera','udemy'], 'Certifications include Google Cloud Generative AI Leader, Microsoft Azure AI Essentials, the ReGeneration Academy (Coca-Cola), EY &amp; Microsoft AI Skills Passport, Machine Learning I &amp; II (Univ. of London, Duke) and a PostgreSQL bootcamp. ' + go('tab-certifications')],
     [['paper','publication','publish','mdpi','survey'], 'I co-authored "Advances in Facial Expression Recognition: A Survey of Methods, Benchmarks, Models, and Datasets" (MDPI). ' + go('tab-rnd')],
     [['skill','stack','tool','langgraph','langchain','python','pytorch','framework','tech'], 'SKILLS'],
     [['project','portfolio','github','built','build','made','εργα','έργα'], 'PROJECTS'],
@@ -1924,7 +1926,7 @@ document.querySelectorAll(".geo-bot").forEach(function(box){
     [['language','greek','english','french','speak','γλωσσ'], 'Greek (native), English (C2, University of Michigan), French (B1, KPG).'],
     [['where','location','based','live','greece','thessaloniki','remote','relocat'], 'I am based in Thessaloniki, Greece, and happy to collaborate remotely across Europe.'],
     [['contact','email','reach','hire','linkedin','call','meet','επικοινων'], 'CONTACT'],
-    [['learn','video','explain','apostle','nuclear','ml algorithm'], 'Explore &amp; Learn has visual explainers: 9 ML algorithms from linear regression to an LLM, a Nuclear Physics encyclopedia and an animated atlas of the Apostles\' journeys. ' + go('tab-learn')],
+    [['learn','video','explain','apostle','nuclear','ml algorithm'], 'Explore &amp; Learn has visual explainers: 9 ML algorithms from linear regression to an LLM, a Nuclear Physics encyclopedia and an animated atlas of the Apostles\' journeys (<a href="vioi-agion.html" target="_blank" rel="noopener">open the atlas ↗</a>). ' + go('tab-learn')],
     [['experience','career','job','work','worked','where did you work','companies','δουλει'], 'EXPERIENCE'],
     [['hello','hi','hey','γεια','καλημερα','καλημέρα'], 'Hi! 👋 I am Thomas\'s terminal. Ask me about his work, projects or teaching, or type <span class="k">help</span>.'],
     [['who are you','about','yourself','introduce','ποιος'], 'ABOUT']
