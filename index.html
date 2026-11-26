@@ -607,6 +607,22 @@
   .geo-bot-q button:hover { border-color: var(--accent); }
 
   /* ===== PRO UPGRADES ===== */
+  /* Wide layout */
+  .hero-split { display:block; }
+  #ask.hero-side { margin-top:36px; }
+  @media (min-width:1200px) {
+    main { max-width:1180px; }
+    .tab-content:not(#tab-cv) { max-width:940px; margin:0 auto; }
+    .hero-split { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr); gap:56px; align-items:center; }
+    .hero h1 { font-size:clamp(2.5rem,3.1vw,3.3rem); line-height:1.12; }
+    .hero h1 br { display:none; }
+    .hero-intro .now-strip { border-radius:16px; width:auto; }
+    #ask.hero-side { margin-top:0; }
+    #ask.hero-side .term-out { height:270px; }
+    .stats-row, .uni-grid, .badges { max-width:none !important; }
+    .stats-row { margin-top:44px; }
+    .creds, .worked { max-width:none; }
+  }
   /* Learn tab */
   .learn-title { font-family:var(--serif); font-weight:400; font-size:clamp(1.7rem,4vw,2.3rem); line-height:1.2; margin:-14px 0 14px; }
   .learn-title em { color:var(--accent); }
@@ -843,11 +859,13 @@
     
     <!-- Hero Section -->
     <div class="hero">
+      <div class="hero-split">
+      <div class="hero-intro">
       <div class="hero-top">
         <div class="hero-eyebrow">AI Engineer &amp; Researcher · Greece</div>
         <span class="open-pill"><span class="pulse"></span>Open to collaborations &amp; teaching</span>
       </div>
-      <h1>Building AI systems that<br><em>actually work</em> in production.</h1>
+      <h1>Building AI systems that <br><em>actually work</em> in production.</h1>
 <p>Physicist turned AI Engineer, based in Greece. I currently build <strong style="color:var(--ink); font-weight:500;">agentic threat-intelligence systems at Satori Analytics</strong>, after an Agentic RAG project at PwC and four years of ML, NLP and clinical AI research at CERTH ITI.
 MSc in Health Statistics &amp; Data Analytics (AUTH, Excellent); MSc in AI &amp; Deep Learning in progress (UNIWA).
 I also teach: I like building AI that explains science as clearly as a good teacher does.</p>
@@ -860,6 +878,24 @@ I also teach: I like building AI that explains science as clearly as a good teac
         <span>AI Engineer @ Satori Analytics</span><span class="now-dot">·</span>
         <span>MSc thesis: an AI tutor for Physics</span><span class="now-dot">·</span>
         <span>Teaching Physics &amp; Maths</span>
+      </div>
+      </div>
+      <!-- Terminal AI -->
+    <div id="ask" class="hero-side">
+      <div class="section-label">Ask my terminal</div>
+      <div class="term" id="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>ask-thomas — zsh</span></div>
+        <div class="term-out" id="termOut" aria-live="polite"></div>
+        <form class="term-in" id="termForm" autocomplete="off">
+          <label for="termInput" class="term-prompt">visitor@thomas:~$</label>
+          <input id="termInput" type="text" spellcheck="false" placeholder="type a question or 'help'" aria-label="Ask the terminal">
+        </form>
+      </div>
+      <div class="term-chips" id="termChips">
+        <button type="button">help</button><button type="button">What do you do now?</button><button type="button">What did you build at PwC?</button><button type="button">skills</button><button type="button">Do you teach?</button><button type="button">projects</button><button type="button">contact</button>
+      </div>
+      <p class="term-note">Runs in your browser and answers from my CV. Ask in English or Greek.</p>
+    </div>
       </div>
       <div class="stats-row">
         <div class="stat-box"><div class="stat-num" data-count="5" data-suffix="+">5+</div><div class="stat-lbl">years in ML &amp; AI</div></div>
@@ -891,22 +927,6 @@ I also teach: I like building AI that explains science as clearly as a good teac
       </div>
     </div>
 
-    <!-- Terminal AI -->
-    <section id="ask">
-      <div class="section-label">Ask my terminal</div>
-      <div class="term" id="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>ask-thomas — zsh</span></div>
-        <div class="term-out" id="termOut" aria-live="polite"></div>
-        <form class="term-in" id="termForm" autocomplete="off">
-          <label for="termInput" class="term-prompt">visitor@thomas:~$</label>
-          <input id="termInput" type="text" spellcheck="false" placeholder="type a question or 'help'" aria-label="Ask the terminal">
-        </form>
-      </div>
-      <div class="term-chips" id="termChips">
-        <button type="button">help</button><button type="button">What do you do now?</button><button type="button">What did you build at PwC?</button><button type="button">skills</button><button type="button">Do you teach?</button><button type="button">projects</button><button type="button">contact</button>
-      </div>
-      <p class="term-note">Runs in your browser and answers from my CV. Ask in English or Greek.</p>
-    </section>
 
     <!-- Tools & Skills -->
    <section id="skills-section">
